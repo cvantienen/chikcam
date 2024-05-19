@@ -26,9 +26,9 @@
 <!-- Your stuff: Third-party CSS libraries go here -->
 <!-- This file stores project-specific CSS -->
 
-  
-  <link href="{% static 'css/project.css' %}" rel="stylesheet" />
 
+  <link href="{% static 'css/project.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
 
 {% endblock css %}
 <!-- Le javascript
@@ -48,16 +48,16 @@
 
 <!-- place project specific Javascript in this file -->
 
-  
+
+  <script defer src="{% static 'js/project.js' %}"></script>
   <script defer src="{% static 'js/project.js' %}"></script>
 
-
-{% endblock javascript %}
+    {% endblock javascript %}
 </head>
-<body class="{% block bodyclass %}{% endblock bodyclass %}">
+<body class="{% block bodyclass %} bg-dark {% endblock bodyclass %}" id="page-top">
   {% block body %}
   <div class="mb-1">
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-expand-lg navbar-custom fixed-top">
       <div class="container-fluid">
         <button class="navbar-toggler navbar-toggler-right"
                 type="button"
@@ -75,7 +75,7 @@
               <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}">About</a>
+              <a class="nav-link" href="{% url 'chicks' %}">Chicks</a>
             </li>
             {% if request.user.is_authenticated %}
               <li class="nav-item">
@@ -117,9 +117,99 @@
     {% endif %}
     {% block main %}
       {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
       {% endblock content %}
     {% endblock main %}
+    <footer class="py-5 bg-body-tertiary text-center text-white">
+  <!-- Grid container -->
+      <div class="container p-4">
+        <section class="mb-4">
+          <p>
+            Stay in the loop! Receive the latest news and updates on The Chicks and Chickcam.
+          </p>
+        </section>
+        <!-- Section: Form -->
+        <section class="">
+          <form action="">
+            <!--Grid row-->
+            <div class="row d-flex justify-content-center">
+              <!--Grid column-->
+              <div class="col-md-5 col-12">
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="email" id="form5Example24" class="form-control" placeholder="Email address" />
+                  <label class="form-label" for="form5Example24"></label>
+                </div>
+              </div>
+              <div class="col-auto">
+                <!-- Submit button -->
+                <button data-mdb-ripple-init type="submit" class="btn btn-outline-primary mb-4">
+                  Subscribe
+                </button>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+          </form>
+        </section>
+        <!-- Section: Form -->
+        <!-- Section: Links -->
+        <section class="text-white text-decoration-none">
+          <!--Grid row-->
+          <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+    
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a class="text-white text-decoration-none" href="{% url 'home' %}">Home</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+    
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a class="text-white text-decoration-none" href={% url 'account_signup' %}>Sign Up</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+    
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a class="text-white text-decoration-none" href="{% url 'account_login' %}">Login</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+    
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a class="text-white text-decoration-none" href="{% url 'chicks' %}">Chicks</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+      </div>
+      <!-- Grid container -->
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024 Copyright
+        <a class="text-reset fw-bold text-decoration-none" href="https://mdbootstrap.com/">chickcam.com</a>
+        <p class="text-muted">Cody Joseph van Tienen</p>
+      </div>
+      <!-- Copyright -->
+    </footer>
 
   </div>
   {% endblock body %}
