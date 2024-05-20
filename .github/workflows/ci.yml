@@ -15,4 +15,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         port: 22
-        script: cd /root/chikcam && docker-compose -f docker-compose.production.yml down && git pull && docker-compose -f docker-compose.production.yml build && docker-compose -f docker-compose.production.yml run --rm django python manage.py migrate && docker-compose -f docker-compose.production.yml up -d
+        script: cd /root/chikcam && docker compose -f docker-compose.production.yml down && git pull && docker compose -f docker-compose.production.yml build && docker compose -f docker-compose.production.yml run --rm django python manage.py migrate && docker compose -f docker-compose.production.yml up -d
