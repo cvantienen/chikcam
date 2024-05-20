@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="80" height="80">
+  <!-- Body -->
+  <ellipse cx="50" cy="70" rx="25" ry="35" fill="#FFD700" />
+  <!-- Head -->
+  <circle cx="50" cy="50" r="20" fill="#FFD700" />
+  <!-- Eyes -->
+  <circle cx="40" cy="45" r="3" fill="black" />
+  <circle cx="60" cy="45" r="3" fill="black" />
+  <!-- Beak -->
+  <polygon points="50,50 55,60 45,60" fill="orange" />
+</svg>

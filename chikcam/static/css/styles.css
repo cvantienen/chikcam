@@ -3615,7 +3615,7 @@ textarea.form-control-lg {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
-  margin-bottom: 0;
+  margin-bottom: 5rem;
   list-style: none;
 }
 
@@ -10858,13 +10858,15 @@ html {
 header.masthead {
   position: relative;
   overflow: hidden;
-  padding-top: calc(7rem + 72px);
-  padding-bottom: 7rem;
-  background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
+  padding-top: 7rem;
+  padding-bottom: 5rem;
+  background: linear-gradient(0deg, #e89900 0%, #fdb421 33%, #ff0066 66%, #ff408b 100%);
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: scroll;
   background-size: cover;
+  margin-top: 8rem;
+
 }
 header.masthead .masthead-content {
   z-index: 1;

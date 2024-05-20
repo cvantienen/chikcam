@@ -56,7 +56,7 @@
 </head>
 <body class="{% block bodyclass %} bg-dark {% endblock bodyclass %}" id="page-top">
   {% block body %}
-  <div class="mb-1">
+  <div class="mb-4">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-expand-lg navbar-custom fixed-top">
       <div class="container-fluid">
         <button class="navbar-toggler navbar-toggler-right"
@@ -68,8 +68,10 @@
                 aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="{% url 'home' %}">chikcam</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="navbar-brand yellow-gradient" href="{% url 'home' %}">
+          <span class="yellow-gradient">chik</span><span class="pink-gradient">cam</span>
+        </a>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
@@ -158,7 +160,7 @@
           <div class="row">
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-    
+
               <ul class="list-unstyled mb-0">
                 <li>
                   <a class="text-white text-decoration-none" href="{% url 'home' %}">Home</a>
@@ -166,7 +168,7 @@
               </ul>
             </div>
             <!--Grid column-->
-    
+
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
               <ul class="list-unstyled mb-0">
@@ -176,7 +178,7 @@
               </ul>
             </div>
             <!--Grid column-->
-    
+
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
               <ul class="list-unstyled mb-0">
@@ -186,7 +188,7 @@
               </ul>
             </div>
             <!--Grid column-->
-    
+
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
               <ul class="list-unstyled mb-0">
@@ -210,7 +212,6 @@
       </div>
       <!-- Copyright -->
     </footer>
-
   </div>
   {% endblock body %}
   <!-- /container -->

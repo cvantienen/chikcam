@@ -7,7 +7,21 @@
 }
 
 .alert-error {
-  color: #b94a48;
+  color: #d3423f;
   background-color: #f2dede;
   border-color: #eed3d7;
+}
+
+.pink-gradient {
+  background: linear-gradient(0deg, #d3081a 0%, #ff0066 66%, #ff408b 100%);
+  -webkit-background-clip: text; /* For Safari/Chrome/iOS */
+  background-clip: text;
+  color: transparent;
+}
+
+.yellow-gradient {
+  background: linear-gradient(0deg, #ff5417 0%, #fdb421 66%, #ffc14b 100%);
+  -webkit-background-clip: text; /* For Safari/Chrome/iOS */
+  background-clip: text;
+  color: transparent;
 }
