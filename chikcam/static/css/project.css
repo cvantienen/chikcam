@@ -25,3 +25,30 @@
   background-clip: text;
   color: transparent;
 }
+
+.light-gradient {
+  background: linear-gradient(0deg, #525151 0%, #858585 10%, #fffefe 100%);
+  -webkit-background-clip: text; /* For Safari/Chrome/iOS */
+  background-clip: text;
+  color: transparent;
+}
+
+
+body {
+    background: linear-gradient(-45deg, #696767, #1a1a1a, #151515, #a1a1a1);
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite alternate;
+    height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
