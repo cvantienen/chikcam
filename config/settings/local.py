@@ -14,7 +14,7 @@ SECRET_KEY = env(
     default="34d911XboBnhmfPRckB15yVLy8Wk353yrcHBIJfLXjiGAas6udjSuqlnuMvOwVXV",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "www.chikcam.com", "chikcam.com"]  # noqa: S104
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", ".chikcam.com"]  # noqa: S104
 
 # CACHES
 # ------------------------------------------------------------------------------
