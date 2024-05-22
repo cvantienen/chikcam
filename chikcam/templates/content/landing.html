@@ -1,0 +1,17 @@
+{% load static %}
+<header class="masthead text-center text-white rounded-5">
+  <div class="masthead-content">
+    <div class="container px-5">
+      <h1 class="masthead-heading mb-0 text-dark">ChikCam</h1>
+      <h2 class="masthead-content mb-0 text-dark">Real Chicks in Real Time</h2>
+      <a class="btn btn-dark rounded-pill mt-5 align-content-center" href="{% url 'chicks' %}">
+        Watch Now <img class="" src="{% static 'images/icons/arrow-door-in.svg' %}" alt="arrow icon"> 
+      </a>
+      <a class="btn btn-dark rounded-pill mt-5" href={% url 'account_signup' %}>Watch Now <img></a>
+    </div>
+  </div>
+  <div class="bg-circle-1 bg-circle"></div>
+  <div class="bg-circle-2 bg-circle"></div>
+  <div class="bg-circle-3 bg-circle"></div>
+  <div class="bg-circle-4 bg-circle"></div>
+</header>

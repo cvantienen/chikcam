@@ -52,3 +52,40 @@ body {
 		background-position: 0% 50%;
 	}
 }
+
+.bg-pink-gradient {
+  background: linear-gradient(0deg, rgba(204, 3, 91, 0.92) 0%, rgba(255, 0, 113, 0.92) 33%, rgba(255, 0, 113, 0.92) 33%);
+  border-color: #badce3;
+}
+
+@keyframes floatAnimation {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(250px, 100px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.bg-circle {
+  animation: floatAnimation 8s ease-in-out infinite;
+}
+
+.bg-circle-1 {
+  animation-delay: 1s;
+}
+
+.bg-circle-2 {
+  animation-delay: 2s;
+}
+
+.bg-circle-3 {
+  animation-delay: 0s;
+}
+
+.bg-circle-4 {
+  animation-delay: 0s;
+}
