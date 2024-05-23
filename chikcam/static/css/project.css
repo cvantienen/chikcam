@@ -28,17 +28,16 @@
 
 .light-gradient {
   background: linear-gradient(0deg, #525151 0%, #858585 10%, #fffefe 100%);
-  -webkit-background-clip: text; /* For Safari/Chrome/iOS */
-  background-clip: text;
-  color: transparent;
+  border-color: #ff408b;
 }
 
 
 body {
-    background: linear-gradient(-45deg, #696767, #1a1a1a, #151515, #a1a1a1);
-    background-size: 400% 400%;
-    animation: gradient 8s ease infinite alternate;
-    height: 100vh;
+  padding-top: 5rem;
+  background: linear-gradient(-45deg, #696767, #1a1a1a, #151515, #a1a1a1);
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite alternate;
+  height: 100vh;
 }
 
 @keyframes gradient {
@@ -88,4 +87,18 @@ body {
 
 .bg-circle-4 {
   animation-delay: 0s;
+}
+
+.navbar {
+  margin-bottom: 5rem;
+}
+
+.img-size {
+  width: 200px;
+  height: 200px;
+}
+
+.card {
+  background: linear-gradient(0deg, #0e0e0e 0%, #343434 40%, #343434 100%);
+  border-color: #ff408b;
 }
