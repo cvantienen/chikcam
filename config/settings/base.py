@@ -87,7 +87,6 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "chikcam.users",
-    "chikcam.stream",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

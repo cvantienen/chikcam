@@ -27,8 +27,8 @@
 }
 
 .light-gradient {
-  background: linear-gradient(0deg, #525151 0%, #858585 10%, #fffefe 100%);
-  border-color: #ff408b;
+  background: radial-gradient(circle, #070707, #000000 30%, rgba(93, 0, 37, 0.62));
+  border-color: #ea176a;
 }
 
 
@@ -93,12 +93,50 @@ body {
   margin-bottom: 5rem;
 }
 
-.img-size {
-  width: 200px;
-  height: 200px;
+
+.order-card {
+    color: #fff;
 }
 
+.bg-c-blue {
+    background: linear-gradient(45deg,#4099ff,#73b4ff);
+}
+
+.bg-c-green {
+    background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+}
+
+.bg-c-yellow {
+    background: linear-gradient(45deg,#FFB64D,#ffcb80);
+}
+
+.bg-c-pink {
+    background: linear-gradient(45deg,#FF5370,#ff869a);
+}
+
+
 .card {
-  background: linear-gradient(0deg, #0e0e0e 0%, #343434 40%, #343434 100%);
-  border-color: #ff408b;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.card .card-block {
+    padding: 25px;
+}
+
+.order-card i {
+    font-size: 26px;
+}
+
+.f-left {
+    float: left;
+}
+
+.f-right {
+    float: right;
 }

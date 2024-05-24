@@ -10,8 +10,8 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
-        "about/",
-        TemplateView.as_view(template_name="pages/about.html"),
+        "chicks/",
+        TemplateView.as_view(template_name="pages/chicks.html"),
         name="chicks",
     ),
     # Django Admin, use {% url 'admin:index' %}

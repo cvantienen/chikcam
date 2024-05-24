@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class StreamConfig(AppConfig):
+class ChicksConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'stream'
+    name = 'chicks'
