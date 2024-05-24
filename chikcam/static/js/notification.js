@@ -1,11 +1,7 @@
 // notification.js
 $(document).ready(function() {
-  // Define notification messages
-  var messages = [
-    "Notification 1",
-    "Notification 2",
-    "Notification 3"
-  ];
+  // Define a single notification message
+  var message = "Notification 1";
 
   // Function to display toast with message
   function showToast(message) {
@@ -27,15 +23,8 @@ $(document).ready(function() {
     $('.toast').toast('show');
   }
 
-  // Function to cycle through messages every 5 minutes
-  function cycleMessages() {
-    var index = 0;
-    setInterval(function() {
-      showToast(messages[index]);
-      index = (index + 1) % messages.length;
-    }, 300000); // 300000 milliseconds = 5 minutes
-  }
-
-  // Start cycling messages
-  cycleMessages();
+  // Show the message after 3 seconds
+  setTimeout(function() {
+    showToast(message);
+  }, 3000); // 3000 milliseconds = 3 seconds
 });
