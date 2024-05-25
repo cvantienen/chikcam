@@ -27,17 +27,32 @@
 }
 
 .light-gradient {
-  background: radial-gradient(circle, #070707, #000000 30%, rgba(93, 0, 37, 0.62));
-  border-color: #ea176a;
+  background: linear-gradient(0deg, #ffb340 0%, #323231 5%, #282727 100%);
 }
+
+.bg-animate-dark {
+  background: linear-gradient(100deg, #261306, #2f2703, #280427);
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite alternate;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 
 body {
   padding-top: 5rem;
-  background: linear-gradient(-45deg, #696767, #1a1a1a, #151515, #a1a1a1);
-  background-size: 400% 400%;
-  animation: gradient 8s ease infinite alternate;
-  height: 100vh;
+  background: linear-gradient(0deg, #161c24 0%, #10131f 66%, rgba(22, 25, 33, 0.84) 100%);
 }
 
 @keyframes gradient {
@@ -99,19 +114,19 @@ body {
 }
 
 .bg-c-blue {
-    background: linear-gradient(45deg,#4099ff,#73b4ff);
+    background: linear-gradient(10deg,#4099ff,#3e3c38);
 }
 
 .bg-c-green {
-    background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+    background: linear-gradient(12deg,#2ed8b6,#3e3c38);
 }
 
 .bg-c-yellow {
-    background: linear-gradient(45deg,#FFB64D,#ffcb80);
+    background: linear-gradient(18deg,#FFB64D, #3e3c38);
 }
 
 .bg-c-pink {
-    background: linear-gradient(45deg,#FF5370,#ff869a);
+    background: linear-gradient(9deg,#FF5370,#3e3c38);
 }
 
 
@@ -119,7 +134,6 @@ body {
     border-radius: 5px;
     -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
     box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-    border: none;
     margin-bottom: 30px;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -127,6 +141,7 @@ body {
 
 .card .card-block {
     padding: 25px;
+    height: 9rem;
 }
 
 .order-card i {

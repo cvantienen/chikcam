@@ -52,8 +52,8 @@
 </head>
 <body class="{% block bodyclass %} bg-dark text-light {% endblock bodyclass %}" id="page-top">
   {% block body %}
-  <div class="bg-pink-gradient gradient-animation">
-    <nav class="m-1 navbar navbar-expand-md navbar-dark light-gradient navbar-expand-lg navbar-custom fixed-top">
+  <div class="bg-pink-gradient">
+    <nav class="navbar navbar-expand-md navbar-dark light-gradient navbar-expand-lg navbar-custom fixed-top">
       <div class="container-fluid">
         <button class="navbar-toggler navbar-toggler-right"
                 type="button"
@@ -92,7 +92,7 @@
               {% if ACCOUNT_ALLOW_REGISTRATION %}
                 <li class="nav-item">
                   {# URL provided by django-allauth/account/urls.py #}
-                  <a id="sign-up-link" class="mx-3 nav-link btn btn-outline-primary" href="{% url 'account_signup' %}">{% translate "Sign Up" %}</a>
+                  <a id="sign-up-link" class="mx-3 nav-link btn btn-primary bg-pink-gradient text-white" href="{% url 'account_signup' %}">{% translate "Sign Up" %}</a>
                 </li>
               {% endif %}
             {% endif %}
@@ -118,8 +118,9 @@
       {% endblock content %}
     {% endblock main %}
   </div>
-  {% endblock body %}
   {% include 'sections/footer.html' %}
+  {% endblock body %}
+
   <!-- /container -->
   {% block modal %}
   {% endblock modal %}

@@ -1,27 +1,28 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-{% include 'content/cards.html' %}  
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12 py-5 display-6">
-      <span class="yellow-gradient">chik</span><span class="pink-gradient">cam</span>
+    {% include 'content/cards.html' %}
+    <div class="col-12" id="fizzle_title_1">
+      <span class="yellow-gradient display-3">chik</span><span class="pink-gradient display-3">cam</span>
+      <p class="text-muted lead"> Watch Real Hot Chicks</p>
     </div>
-    <div class="col-lg-10">
+    <div class="col-lg-10" id="fizzle_title_2">
       <div id="twitch-embed"></div>
     </div>
-    <div class="col-lg-2 h-75">
-      <div class="card dark-gradient rounded-3" id="fizzle_title_1">
-        <div class="card-body text-center">
-          <h5 class="card-title text-center mb-2 text-muted">Interactive Buttons</h5>
-          <p class="text-muted mb-4 yellow-gradient">Access interactive features with your account!</p>
-          <hr>
+    <div class="col-lg-2 h-75 my-4 align-content-center justify-content-center" id="fizzle_title_1">
+      <h5 class="card-title text-center mb-2 text-muted display-6">Interactive</h5>
+      <p class="text-muted mb-4 yellow-gradient text-center">Access features with your account, play with the chicks!</p>
+      <hr>
+      <div class="card rounded-3 bg-animate-dark mt-4">
+        <div class="card-body">
           <div class="text-center">
-            <a class="btn btn-dark mb-3 w-100" href="#" role="button">Feed Snack</a>
-            <a class="btn btn-secondary mb-3 w-100" href="#" role="button">Flashlight</a>
-            <a class="btn btn-info mb-3 w-100" href="#" role="button">Text to Talk</a>
-            <a class="btn btn-success mb-3 w-100" href="#" role="button">Play Song</a>
-            <a class="btn btn-warning mb-3 w-100" href="#" role="button">Take a Pic</a>
+            <a class="btn btn-dark my-3 w-100" href="#" role="button">Feed Snack</a>
+            <a class="btn btn-secondary my-3 w-100" href="#" role="button">Flashlight</a>
+            <a class="btn btn-info my-3 w-100" href="#" role="button">Text to Talk</a>
+            <a class="btn btn-success my-3 w-100" href="#" role="button">Play Song</a>
+            <a class="btn btn-warning my-3 w-100" href="#" role="button">Take a Pic</a>
           </div>
         </div>
       </div>

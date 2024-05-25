@@ -1,38 +1,38 @@
 {% load static %}
-<footer class="py-2 text-center text-light bg-dark">
+<footer class="py-2 text-center text-light light-gradient">
   <div class="container">
-    <div class="">
-      <a class="btn btn-outline-light btn-floating m-3" href="#!" role="button">
-        <img src="{% static 'images/icons/instagram.svg' %}" alt="Instagram">
-      </a>
-      <a class="btn btn-outline-light btn-floating m-3" href="#!" role="button">
-        <img src="{% static 'images/icons/tik-tok.svg' %}" alt="TikTok">
-      </a>
-      <a class="btn btn-outline-light btn-floating m-3" href="#!" role="button">
-        <img src="{% static 'images/icons/x-twitter.svg' %}" alt="Twitter/X">
-      </a>
-      <a class="btn btn-outline-light btn-floating m-3" href="#!" role="button">
-        <img src="{% static 'images/icons/facebook.svg' %}" alt="Facebook">
-      </a>
-      <a class="btn btn-outline-light btn-floating m-3" href="#!" role="button">
-        <img src="{% static 'images/icons/twitch.svg' %}" alt="Facebook">
-      </a>
-    </div>
-    <form action="" class="text-center">
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-5 col-12">
-          <div class="form-outline form-white mb-4">
-            <input type="email" id="form5Example2" class="form-control" placeholder="Email address" />
-          </div>
-        </div>
-        <div class="col-auto">
-          <button type="submit" class="btn btn-outline-warning">
-            <span class="pink-gradient"><img class="" src="{% static 'images/icons/paper-plane-2.svg'  %}" alt="send"> Subscribe</span>
-          </button>
+    <div class="row justify-content-center"> 
+      <div class="col-md-12 col-lg-6 d-flex justify-content-center mt-2">
+        <div class="btn-group-sm mb-2">
+          <a class="btn btn-outline-light btn-floating mx-4" href="javascript:void(0);" role="button">
+            <img src="{% static 'images/icons/instagram.svg' %}" alt="Instagram">
+          </a>
+          <a class="btn btn-outline-light btn-floating mx-4" href="javascript:void(0);" role="button">
+            <img src="{% static 'images/icons/tik-tok.svg' %}" alt="TikTok">
+          </a>
+          <a class="btn btn-outline-light btn-floating mx-4" href="javascript:void(0);" role="button">
+            <img src="{% static 'images/icons/x-twitter.svg' %}" alt="Twitter/X">
+          </a>
+          <a class="btn btn-outline-light btn-floating mx-4" href="javascript:void(0);" role="button">
+            <img src="{% static 'images/icons/facebook.svg' %}" alt="Facebook">
+          </a>
+          <a class="btn btn-outline-light btn-floating mx-4" href="javascript:void(0);" role="button">
+            <img src="{% static 'images/icons/twitch.svg' %}" alt="Twitch">
+          </a>
         </div>
       </div>
-      <p class="text-muted">Stay in the loop! Receive the latest newsletter for updates on The Chicks!</p>
-    </form>
+      <div class="col-md-12 col-lg-5 my-sm-2">
+        <form action="" class="form-inline justify-content-center align-items-center">
+          <div class="d-flex mb-2 mr-sm-2">
+            <input type="email" id="form5Example2" class="form-control" placeholder="Email address">
+            <button type="submit" class="btn btn-outline-warning btn-sm mx-2">
+              Subscribe <img src="{% static 'images/icons/paper-plane-2.svg' %}" alt="send">
+            </button>
+          </div>
+          <p class="text-muted"> Receive the latest newsletter for updates on The Chicks!</p>
+        </form>
+      </div>  
+    </div>
     <a class="text-reset text-decoration-none" href="https://mdbootstrap.com/">© 2024 <span class="fw-semibold yellow-gradient">chick</span><span class="fw-semibold pink-gradient">cam</span> <span class="text-muted">Cody Joseph van Tienen</span></a>
-  </div>
+  </div>  
 </footer>
