@@ -1,48 +1,14 @@
-from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from chikcam.users.models import User
-from django.conf import settings
 
 
 # Create your views here.
 def chicks_stream(request: HttpRequest):
-    active_members_count = User.objects.count()
+    user_count = User.objects.count()
     context = {
-        'active_members_count': active_members_count,
+        'user_count': user_count,
     }
-    return render(request, "chicks/stream.html")
+    return render(request, "chicks/stream.html", context)
 
-"""
-def checkout(request: HttpRequest):
-    if request.method == "POST":
-        stripe.api_key = settings.STRIPE_API_KEY
-        if request.user.stripe_customer_id:
-            customer_id = request.user.stripe_customer_id
-        else:
-            customer = stripe.Customer.create(
-                email=request.user.email
-            )
-            customer_id = customer['id']
-            request.user.stripe_customer_id = customer_id
-            request.user.save()
-        session = stripe.checkout.Session.create(
-            mode="setup",
-            currency="usd",
-            customer=customer_id,
-            success_url=request.build_absolute_uri(
-                reverse('billing:checkout_success')) + '?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url=request.build_absolute_uri(reverse('billing:home')),
-        )
-        return redirect(session.url, code=303)
-    return render(request, "billing/checkout.html")
-
-
-@login_required
-def checkout_success(request: HttpRequest):
-    session_id = request.GET['session_id']
-    stripe.api_key = settings.STRIPE_API_KEY
-    session = stripe.checkout.Session.retrieve(session_id)
-    print(session)
-    return render(request, "billing/checkout_success.html")"""

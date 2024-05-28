@@ -8,3 +8,4 @@ app_name = "chicks"
 urlpatterns = [
     path("", view=chicks_stream, name="home"),
 ]
+

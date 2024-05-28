@@ -1,30 +1,36 @@
 {% load static %}
-<div class="container d-none d-sm-block">
-  <div class="row">
+<div class="container">
+  <div class="row my-4">
     <div class="col-md-4 col-xl-3" id="bounce_one">
       <div class="card bg-c-green order-card">
         <div class="card-block">
-          <h6 class="m-b-20">Chick Count</h6>
+          <h6 class="m-b-20"><img class="icon-size" src="{% static 'images/icons/feather-2.svg' %}" alt="Accounts:">
+             Chickens</h6>
           <hr>
-          <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>10</span></h2>
+          <h2 class="text-right">
+            9</h2>
         </div>
       </div>
     </div>
     <div class="col-md-4 col-xl-3" id="bounce_two">
       <div class="card bg-c-pink order-card border-2">
         <div class="card-block">
-          <h6 class="m-b-20">Breeds</h6>
+          <h6 class="m-b-20"><img class="icon-size" src="{% static 'images/icons/rotation-360.svg' %}" alt="Accounts:">
+             Breeds</h6>
           <hr>
-          <h4 class="text-right"><i class="fa fa-rocket f-left"></i><small>Silkie, Australorp, Sapphire</small></h4>
+          <h5 class="text-right">
+            <small>Silkie, Australorp, Sapphire</small></h5>
         </div>
       </div>
     </div>
     <div class="col-md-4 col-xl-3" id="bounce_three">
       <div class="card bg-c-yellow order-card">
         <div class="card-block">
-          <h6 class="m-b-20">Egg's Laid</h6>
+          <h6 class="m-b-20"><img class="icon-size" src="{% static 'images/icons/grid-circle-plus.svg' %}" alt="Accounts:">
+             Eggs Laid</h6>
           <hr>
-          <h2 class="text-right"><i class="fa fa-refresh f-left"></i><span>0</span></h2>
+          <h2 class="text-right">
+            <span>{{ active_users_count }}</span></h2>          
         </div>
       </div>
     </div>
@@ -35,7 +41,7 @@
              Active Members</h6>
           <hr>
           <h2 class="text-right">
-            <span>{{ active_users_count }}</span></h2>
+            <span>{{ user_count }}</span></h2>
         </div>
       </div>
     </div>
