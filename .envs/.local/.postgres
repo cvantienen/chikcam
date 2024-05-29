@@ -1,7 +1,0 @@
-# PostgreSQL
-# ------------------------------------------------------------------------------
-POSTGRES_HOST=postgres
-POSTGRES_PORT=5432
-POSTGRES_DB=chikcam
-POSTGRES_USER=TgIaLuxCbBFODrPbdqUqelwQhHDRjcNU
-POSTGRES_PASSWORD=5kNvLP3TSYD1elHjkASkDWLXX7dCAxYWB2l6rz4cWLYMWj65U46rq3dSYOqG2NRb
