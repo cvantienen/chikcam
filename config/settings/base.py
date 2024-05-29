@@ -286,3 +286,10 @@ SOCIALACCOUNT_FORMS = {"signup": "chikcam.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+# In your settings.py
+
+# ESP32 API Token
+ESP32_API_TOKEN = env("ESP32_API_TOKEN")
+
+# ESP32 API URL
+ESP32_API_URL = env("ESP32_API_URL", default="http://127.0.0.1:8000")

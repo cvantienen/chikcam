@@ -32,7 +32,7 @@
               {% csrf_token %}
               <button type="submit" class="btn btn-success my-3 w-100">Play Song</button>
             </form>
-            <form action="{% url 'esp32:increment_action' 'take_a_pic' %}" method="post">
+            <form action="{% url 'esp32:increment_action' 'take_pic' %}" method="post">
               {% csrf_token %}
               <button type="submit" class="btn btn-warning my-3 w-100">Take a Pic</button>
             </form>
