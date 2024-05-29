@@ -50,7 +50,7 @@
 
 
 
-body {
+.main-bg-dark {
   padding-top: 5rem;
   background: linear-gradient(0deg, #161c24 0%, #10131f 66%, rgba(22, 25, 33, 0.84) 100%);
 }
