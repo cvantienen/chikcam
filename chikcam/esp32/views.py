@@ -15,7 +15,6 @@ def all_buttons_status(request):
         if request_token != settings.ESP32_API_TOKEN:
             return JsonResponse({"ESP32_API_TOKEN error": "Unauthorized"}, status=401)
 
-        # Security checks here (e.g., API key, IP whitelist)
         buttons = ActionButton.objects.all()
         data = {
             "buttons": [
@@ -29,15 +28,22 @@ def all_buttons_status(request):
         return JsonResponse({"all_buttons_status error": "Method not allowed"}, status=405)
 
 
-@login_required
+# Removed @login_required decorator
 def increment_button_activation(request, action_type):
     if request.method == 'POST':
+        # Retrieve the token from the request headers
+        request_token = request.headers.get('Authorization')
+
+        # Check if the token is correct
+        if request_token != settings.ESP32_API_TOKEN:
+            return JsonResponse({"ESP32_API_TOKEN error": "Unauthorized"}, status=401)
+
         try:
             button = ActionButton.objects.get(action_type=action_type)
             button.increment_activation()
-            return redirect('chicks:home')
+            # Assuming 'chicks:home' is a placeholder, you might want to return a JsonResponse instead
+            return JsonResponse({"success": True, "message": "Button activation incremented"}, status=200)
         except ActionButton.DoesNotExist:
             return JsonResponse({"success": False, "error": "Button not found"}, status=404)
     else:
-        # Corrected the error message to reflect the actual unsupported method
         return JsonResponse({"increment_button_activation error": "Method not allowed"}, status=405)
