@@ -1,12 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpRequest
 from django.conf import settings
 
 from .models import ActionButton
 
 
-def all_buttons_status(request):
+def all_buttons_status(request: HttpRequest) -> JsonResponse:
     if request.method == 'GET':
         # Retrieve the token from the request headers
         request_token = request.headers.get('Authorization')
@@ -28,7 +28,6 @@ def all_buttons_status(request):
         return JsonResponse({"all_buttons_status error": "Method not allowed"}, status=405)
 
 
-# Removed @login_required decorator
 def increment_button_activation(request, action_type):
     if request.method == 'POST':
         # Retrieve the token from the request headers
