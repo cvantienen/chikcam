@@ -333,3 +333,5 @@ chikcam/media/
 .envs/*
 !.envs/.local/
 !/.envs/
+/.envs/.local/.django
+/.envs/.local/.postgres
