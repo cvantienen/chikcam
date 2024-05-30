@@ -28,6 +28,7 @@ def all_buttons_status(request: HttpRequest) -> JsonResponse:
         return JsonResponse({"all_buttons_status error": "Method not allowed"}, status=405)
 
 
+@login_required()
 def increment_button_activation(request, action_type):
     if request.method == 'POST':
         # Retrieve the token from the request headers
