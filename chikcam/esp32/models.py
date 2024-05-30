@@ -13,7 +13,7 @@ class ActionButton(models.Model):
     activation_count = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"{self.get_action_type_display()} - Activations: {self.activation_count}"
+        return f"{self.action_type} - Activations: {self.activation_count}"
 
     def increment_activation(self):
         self.activation_count += 1
