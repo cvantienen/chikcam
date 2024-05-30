@@ -2,12 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.http import JsonResponse
 from django.conf import settings
-from django.views.decorators.http import require_GET, require_POST
 
 from .models import ActionButton
 
 
-@require_GET
 def all_buttons_status(request):
     if request.method == 'GET':
         # Retrieve the token from the request headers
@@ -32,7 +30,6 @@ def all_buttons_status(request):
 
 
 @login_required
-@require_POST
 def increment_button_activation(request, action_type):
     if request.method == 'POST':
         try:
