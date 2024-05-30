@@ -168,3 +168,7 @@ sentry_sdk.init(
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+# ESP32 API Token
+ESP32_API_TOKEN = env("ESP32_API_TOKEN")
+# ESP32 API URL
+ESP32_API_URL = env("ESP32_API_URL", default="api/")

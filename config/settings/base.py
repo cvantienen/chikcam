@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 APPS_DIR = BASE_DIR / "chikcam"
 env = environ.Env()
 
-READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
+READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
     env.read_env(str(BASE_DIR / ".env"))
@@ -292,4 +292,4 @@ SOCIALACCOUNT_FORMS = {"signup": "chikcam.users.forms.UserSocialSignupForm"}
 ESP32_API_TOKEN = env("ESP32_API_TOKEN")
 
 # ESP32 API URL
-ESP32_API_URL = env("ESP32_API_URL", default="http://127.0.0.1:8000")
+ESP32_API_URL = env("ESP32_API_URL", default="api/")
