@@ -6,7 +6,6 @@ from django.conf import settings
 from .models import ActionButton
 
 
-@login_required()
 def all_buttons_status(request: HttpRequest) -> JsonResponse:
     if request.method == 'GET':
         # Retrieve the token from the request headers
