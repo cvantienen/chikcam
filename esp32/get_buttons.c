@@ -23,8 +23,8 @@ void loop() {
 
     // Make a GET request to fetch the button status JSON
     http.begin("https://chikcam.com/esp32/uBdnK1AjstGFZ1HrCh3mqn2x49cEQ6yx/"); // Replace with the actual IP address or domain name of your server
-    int httpResponseCode = http.GET();
     http.addHeader("Authorization", "155D2264685B61C8B7A37C5C95BBC"); // Replace YourSecretTokenHere with your actual token
+    int httpResponseCode = http.GET();
 
     if (httpResponseCode == HTTP_CODE_OK) {
       String payload = http.getString();
