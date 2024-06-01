@@ -1,40 +1,63 @@
 #include <ArduinoJson.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
+#include <ESP32Servo.h>
+#include <FastLED.h>
 
-const char* ssid = "Wokwi-GUEST";
-const char* password = "";
+#define NUM_LEDS 8      /* The amount of pixels/leds you have */
+#define DATA_PIN 14      /* The pin your data line is connected to */
+#define LED_TYPE WS2812B /* I assume you have WS2812B leds, if not just change it to whatever you have */
+#define BRIGHTNESS 255   /* Control the brightness of your leds */
+#define SATURATION 255   /* Control the saturation of your leds */
+
+CRGB leds[NUM_LEDS];
+
+Servo myservo;  // create servo object to control a servo
+
+int pos = 0; 
+
+const char* ssid = "BASIL";
+const char* password = "fluffypotato";
 
 const int servoPin = 26;  // GPIO26
 
 int prevActivationCounts[5] = {0}; // Store previous activation counts for 5 activation types
 
-/* Setting PWM properties */
-const int PWMFreq = 50;
-const int PWMChannel = 0;
-const int PWMResolution = 8;
 const char* actionTypeStrings[] = {"take_pic", "flashlight", "feed_snack", "text_to_talk", "play_song"};
-
 
 
 void setup() {
   Serial.begin(115200);
   delay(1000);
 
+  // setup LED
+  FastLED.addLeds<LED_TYPE, DATA_PIN>(leds, NUM_LEDS);
+
   // Connect to Wi-Fi network
   connectToWiFi();
   // Print network configuration
   printNetworkConfig();
 
-
-  // Setup PWM for servo control
-  ledcSetup(PWMChannel, PWMFreq, PWMResolution);
-  ledcAttachPin(servoPin, PWMChannel);
+  // Allow allocation of all timers
+	ESP32PWM::allocateTimer(0);
+	ESP32PWM::allocateTimer(1);
+	ESP32PWM::allocateTimer(2);
+	ESP32PWM::allocateTimer(3);
+	myservo.setPeriodHertz(50);    // standard 50 hz servo
+	myservo.attach(servoPin, 1000, 2000); // attaches the servo on pin 18 to the servo object
+	// using default min/max of 1000us and 2000us
+	// different servos may require different min/max settings
+	// for an accurate 0 to 180 sweep
 }
 
 void loop() {
   delay(100);
 
+  feedSnack();
+
+  rainbowLed();
+  
+  
   if (WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
 
@@ -90,6 +113,7 @@ void loop() {
     Serial.println("WiFi Disconnected");
     connectToWiFi();
   }
+  feedSnack();
   delay(5000); // Wait for 5 seconds before making the next request
 }
 
@@ -121,17 +145,6 @@ void printNetworkConfig() {
   Serial.println(WiFi.dnsIP());
 }
 
-void servoSweep () {
-  // Sweep the servo back and forth
-  for (int dutyCycle = 0; dutyCycle <= 255; dutyCycle++) {
-    ledcWrite(PWMChannel, dutyCycle);
-    delay(15); // Adjust delay as needed for servo movement speed
-  }
-  for (int dutyCycle = 255; dutyCycle >= 0; dutyCycle--) {
-    ledcWrite(PWMChannel, dutyCycle);
-    delay(15); // Adjust delay as needed for servo movement speed
-  }
-}
 
 void activateFunction(int actionIndex) {
   switch(actionIndex) {
@@ -149,7 +162,7 @@ void activateFunction(int actionIndex) {
       break;
     case 3:
       // Activate function for text_to_talk
-      textToTalk();
+    textToTalk();
       break;
     case 4:
       // Activate function for play_song
@@ -178,17 +191,17 @@ void turnOnFlashlight() {
 void feedSnack() {
   // Add your logic to feed a snack
   Serial.println("Feeding snack");
-
   // Sweep the servo back and forth
-  for (int dutyCycle = 0; dutyCycle <= 255; dutyCycle++) {
-    ledcWrite(PWMChannel, dutyCycle);
-    delay(15); // Adjust delay as needed for servo movement speed
+  for (pos = 0; pos <= 230; pos++) {
+    myservo.write(pos);  // tell servo to go to position in variable 'pos'
+    delay(15);           // waits 15ms for the servo to reach the position
   }
-  for (int dutyCycle = 255; dutyCycle >= 0; dutyCycle--) {
-    ledcWrite(PWMChannel, dutyCycle);
-    delay(15); // Adjust delay as needed for servo movement speed
+  
+  // Rotate from 230 to 0 degrees
+  for (pos = 230; pos >= 0; pos--) {
+    myservo.write(pos);  // tell servo to go to position in variable 'pos'
+    delay(15); 
   }
-
 }
 
 void textToTalk() {
@@ -203,3 +216,12 @@ void playSong() {
   // Implement your code to play a song here
 }
 
+void rainbowLed() {
+  for (int j = 0; j < 255; j++) {
+    for (int i = 0; i < NUM_LEDS; i++) {
+      leds[i] = CHSV(i - (j * 2), SATURATION, BRIGHTNESS); /* The higher the value 4 the less fade there is and vice versa */ 
+    }
+    FastLED.show();
+    delay(25); /* Change this to your hearts desire, the lower the value the faster your colors move (and vice versa) */
+  }
+}
