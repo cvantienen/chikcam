@@ -17,6 +17,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("chicks/", include("chikcam.chicks.urls", namespace="chicks")),
     path("esp32/", include("chikcam.esp32.urls", namespace="esp32")),
+    path("billing/", include("chikcam.billing.urls", namespace="billing")),
     # Media files
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]

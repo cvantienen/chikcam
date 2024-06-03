@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout Successful{% endblock title %}
+
+{% block content %}
+      <form action="{% url 'home' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">home</button>
+      </form>
+{% endblock content %}

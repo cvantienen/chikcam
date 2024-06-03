@@ -89,6 +89,7 @@ LOCAL_APPS = [
     "chikcam.users",
     "chikcam.chicks",
     "chikcam.esp32",
+    "chikcam.billing"
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -287,6 +288,7 @@ SOCIALACCOUNT_FORMS = {"signup": "chikcam.users.forms.UserSocialSignupForm"}
 # Your stuff...
 # ------------------------------------------------------------------------------
 # In your settings.py
+STRIPE_API_KEY = env("STRIPE_API_KEY")
 
 # ESP32 API Token
 ESP32_API_TOKEN = env("ESP32_API_TOKEN")

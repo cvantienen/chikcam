@@ -335,3 +335,4 @@ chikcam/media/
 !/.envs/
 /.envs/.local/.django
 /.envs/.local/.postgres
+!/mailpit

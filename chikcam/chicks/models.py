@@ -11,7 +11,7 @@ class Chicken(models.Model):
     BREED_CHOICES = (
         ('Silkie', 'Silkie'),
         ('Australorp', 'Australorp'),
-        ('Sapphire', 'Sapphire'),
+        ('Sapphire Gem', 'Sapphire Gem'),
     )
     name = models.CharField(max_length=200)
     age = models.IntegerField(default=0)
@@ -24,5 +24,3 @@ class Chicken(models.Model):
 
     def __str__(self):
         return self.name
-
-

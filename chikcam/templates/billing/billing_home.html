@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Billing{% endblock title %}
+{% block content %}
+  <h1>Billing Home</h1>
+  {% if request.user.stripe_customer_id %}
+    <p>Your billing information and overview<p>
+  {% else %}
+    <p>Add Credit Card:</p>
+    <a href="{% url 'billing:checkout' %}" class="btn-primary btn">Add Credit Card</a>
+  {% endif %}
+{% endblock %}
