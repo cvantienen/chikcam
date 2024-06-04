@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DeveloperToolsToolWindowSettingsV1" lastSelectedContentNodeId="sql-formatting">
+    <developerToolsConfigurations>
+      <developerToolConfiguration developerToolId="regular-expression-matcher" id="edcc3969-6226-4b94-9be9-2669d5071603" name="Workbench">
+        <properties>
+          <property key="inputText" type="INPUT" value="kotlin.String|aurora midsummer midnight earth" />
+          <property key="regexText" type="INPUT" value="kotlin.String|mid(?&lt;postfix&gt;[a-zA-Z]+)" />
+        </properties>
+      </developerToolConfiguration>
+      <developerToolConfiguration developerToolId="sql-formatting" id="372ec69e-bd82-4502-9ee9-8e3b70c323be" name="Workbench">
+        <properties>
+          <property key="sourceText" type="INPUT" value="kotlin.String|select c.id, c.name, o.address, o.orderedAt from customers c left join orders o ON (o.customerId = c.id) order by o.orderedAt" />
+        </properties>
+      </developerToolConfiguration>
+    </developerToolsConfigurations>
+  </component>
+</project>

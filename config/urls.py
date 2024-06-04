@@ -10,6 +10,9 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    path(".well-known/apple-developer-merchantid-domain-association", TemplateView.as_view(
+        template_name=".well-known/apple-developer-merchantid-domain-association"),
+         name="apple"),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
