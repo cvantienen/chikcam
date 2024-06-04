@@ -287,11 +287,10 @@ SOCIALACCOUNT_FORMS = {"signup": "chikcam.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
-# In your settings.py
+# Stripe
 STRIPE_API_KEY = env("STRIPE_API_KEY")
+STRIPE_WEB_HOOK = env("STRIPE_WEB_HOOK")
 
 # ESP32 API Token
 ESP32_API_TOKEN = env("ESP32_API_TOKEN")
-
-# ESP32 API URL
 ESP32_API_URL = env("ESP32_API_URL", default="api/")

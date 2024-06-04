@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DeveloperToolsToolWindowSettingsV1" lastSelectedContentNodeId="sql-formatting">
+  <component name="DeveloperToolsToolWindowSettingsV1" lastSelectedContentNodeId="uuid-generator">
     <developerToolsConfigurations>
       <developerToolConfiguration developerToolId="regular-expression-matcher" id="edcc3969-6226-4b94-9be9-2669d5071603" name="Workbench">
         <properties>
@@ -14,5 +14,6 @@
         </properties>
       </developerToolConfiguration>
     </developerToolsConfigurations>
+    <expandedGroupNodeIds />
   </component>
 </project>

@@ -1,9 +1,12 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpRequest
+from django.http import HttpRequest, JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
-import stripe
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+
+from .credits import handle_purchase
+import stripe
 
 
 # Create your views here.
@@ -31,7 +34,7 @@ def checkout(request: HttpRequest):
             customer=customer_id,
             success_url=request.build_absolute_uri(
                 reverse('billing:checkout_success')) + '?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url=request.build_absolute_uri(reverse('billing:home')),
+            cancel_url=request.build_absolute_uri(reverse('chicks:home')),
         )
         return redirect(session.url, code=303)
     return render(request, "billing/checkout.html")
@@ -43,4 +46,29 @@ def checkout_success(request: HttpRequest):
     stripe.api_key = settings.STRIPE_API_KEY
     session = stripe.checkout.Session.retrieve(session_id)
     print(session)
-    return render(request, "billing/checkout_success.html")
+    return render(request, "chicks/")
+
+
+@csrf_exempt
+def stripe_webhook(request: HttpRequest):
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WEB_HOOK
+        )
+    except ValueError as e:
+        # Invalid payload
+        return JsonResponse({'status': 'invalid payload'}, status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return JsonResponse({'status': 'invalid signature'}, status=400)
+
+    # Handle the event
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        handle_purchase(session)
+
+    return JsonResponse({'status': 'success'}, status=200)

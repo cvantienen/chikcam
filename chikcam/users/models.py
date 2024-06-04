@@ -16,14 +16,12 @@ class User(AbstractUser):
     first_name = None  # type: ignore[assignment]
     last_name = None  # type: ignore[assignment]
     favorite_chicken = CharField(_("Favorite Chicken"), blank=True, max_length=255)
-    credits = IntegerField(_("Credits"), default=1)
+    credits = IntegerField(_("Credits"), default=50)
     stripe_customer_id = CharField(max_length=255, blank=True, null=True)
 
     def get_absolute_url(self) -> str:
         """Get URL for user's detail view.
-
         Returns:
             str: URL for user detail.
-
         """
         return reverse("users:detail", kwargs={"username": self.username})
