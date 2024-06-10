@@ -29,9 +29,15 @@ def checkout(request: HttpRequest):
             request.user.stripe_customer_id = customer_id
             request.user.save()
         session = stripe.checkout.Session.create(
-            mode="setup",
-            currency="usd",
             customer=customer_id,
+            line_items=[
+                {
+                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                    'price': 'price_1PP7hlECrDARISveU39gU1x1',
+                    'quantity': 1,
+                },
+            ],
+            mode='payment',
             success_url=request.build_absolute_uri(
                 reverse('billing:checkout_success')) + '?session_id={CHECKOUT_SESSION_ID}',
             cancel_url=request.build_absolute_uri(reverse('chicks:home')),
@@ -46,18 +52,18 @@ def checkout_success(request: HttpRequest):
     stripe.api_key = settings.STRIPE_API_KEY
     session = stripe.checkout.Session.retrieve(session_id)
     print(session)
-    return render(request, "chicks/")
+    return render(request, "chicks/stream.html")
 
 
 @csrf_exempt
 def stripe_webhook(request: HttpRequest):
     payload = request.body
-    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    sig_header = request.META['STRIPE_SIGNATURE']
     event = None
 
     try:
         event = stripe.Webhook.construct_event(
-            payload, sig_header, settings.STRIPE_WEB_HOOK
+            payload, sig_header, settings.STRIPE_SIGNATURE
         )
     except ValueError as e:
         # Invalid payload

@@ -10858,9 +10858,7 @@ html {
 header.masthead {
   position: relative;
   overflow: hidden;
-  padding-top: 7rem;
-  padding-bottom: 5rem;
-  background: linear-gradient(0deg, #e89900 0%, #fdb421 33%, #ff0066 66%, #ff408b 100%);
+  background: linear-gradient(0deg, #e89900 0%, #fdb421 33%, #ff0066 66%, #f62b61 100%);
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: scroll;
@@ -10880,13 +10878,13 @@ header.masthead .bg-circle {
   z-index: 0;
   position: absolute;
   border-radius: 100%;
-  background: linear-gradient(0deg, #f30670 0%, #fad43d 100%);
+  background: linear-gradient(0deg, #f30670 0%, #faa23d 100%);
 }
 header.masthead .bg-circle-1 {
-  height: 90rem;
-  width: 90rem;
-  bottom: -55rem;
-  left: -55rem;
+  height: 70rem;
+  width: 70rem;
+  bottom: -25rem;
+  left: -25rem;
 }
 header.masthead .bg-circle-2 {
   height: 50rem;

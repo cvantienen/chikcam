@@ -3,8 +3,8 @@
 {% block title %}Billing Checkout{% endblock title %}
 
 {% block content %}
-      <form action="{% url 'billing:checkout' %}" method="POST">
-        {% csrf_token %}
-        <button type="submit">Checkout</button>
-      </form>
+    <form action={% url 'billing:checkout' %}>
+      {% csrf_token %}
+      <button type="submit">Checkout</button>
+    </form>
 {% endblock content %}
