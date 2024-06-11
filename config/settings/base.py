@@ -289,7 +289,12 @@ SOCIALACCOUNT_FORMS = {"signup": "chikcam.users.forms.UserSocialSignupForm"}
 # ------------------------------------------------------------------------------
 # Stripe
 STRIPE_API_KEY = env("STRIPE_API_KEY")
+STRIPE_PUB_KEY = env("STRIPE_PUB_KEY")
 STRIPE_WEB_HOOK = env("STRIPE_WEB_HOOK")
+STRIPE_TEST_HOOK = env("STRIPE_TEST_HOOK")
+STRIPE_TEST_KEY = env("STRIPE_TEST_KEY")
+STRIPE_TEST_PUB_KEY = env("STRIPE_TEST_PUB_KEY")
+STRIPE_SIGNATURE = env("STRIPE_SIGNATURE")
 
 # ESP32 API Token
 ESP32_API_TOKEN = env("ESP32_API_TOKEN")

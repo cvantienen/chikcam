@@ -6,10 +6,11 @@ def handle_purchase(session):
     customer_id = session['customer']
     payment_intent_id = session['payment_intent']
 
-    print('credits bought!')
     # Retrieve the payment intent to get the amount paid
     payment_intent = stripe.PaymentIntent.retrieve(payment_intent_id)
     amount_paid = payment_intent['amount_received']  # Amount is in cents
+
+    print(f'credits bought!: {amount_paid}')
 
     # Calculate credits based on the amount paid
     credits_bought = amount_paid

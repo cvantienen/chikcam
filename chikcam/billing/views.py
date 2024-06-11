@@ -18,7 +18,7 @@ def billing_home(request: HttpRequest):
 @login_required
 def checkout(request: HttpRequest):
     if request.method == "POST":
-        stripe.api_key = settings.STRIPE_API_KEY
+        stripe.api_key = settings.STRIPE_TEST_KEY
         if request.user.stripe_customer_id:
             customer_id = request.user.stripe_customer_id
         else:
@@ -49,7 +49,7 @@ def checkout(request: HttpRequest):
 @login_required
 def checkout_success(request: HttpRequest):
     session_id = request.GET['session_id']
-    stripe.api_key = settings.STRIPE_API_KEY
+    stripe.api_key = settings.STRIPE_TEST_KEY
     session = stripe.checkout.Session.retrieve(session_id)
     print(session)
     return render(request, "chicks/stream.html")
@@ -58,12 +58,12 @@ def checkout_success(request: HttpRequest):
 @csrf_exempt
 def stripe_webhook(request: HttpRequest):
     payload = request.body
-    sig_header = request.META['STRIPE_SIGNATURE']
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
 
     try:
         event = stripe.Webhook.construct_event(
-            payload, sig_header, settings.STRIPE_SIGNATURE
+            payload, sig_header, settings.STRIPE_TEST_HOOK
         )
     except ValueError as e:
         # Invalid payload
@@ -73,7 +73,7 @@ def stripe_webhook(request: HttpRequest):
         return JsonResponse({'status': 'invalid signature'}, status=400)
 
     # Handle the event
-    if event['type'] == 'checkout.session.completed':
+    if event['type'] == 'payment_intent.succeeded':
         session = event['data']['object']
         handle_purchase(session)
 
