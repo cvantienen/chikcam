@@ -24,6 +24,12 @@
           </li>
           {% if request.user.is_authenticated %}
             <li class="nav-item">
+              <span class="nav-link">
+                <img src="{% static 'images/icons/coin.svg' %}" class="icon-size" alt="Credits">
+                {{ request.user.credits }}
+              </span>
+            </li>
+            <li class="nav-item">
               <a class="nav-link"
                  href="{% url 'users:detail' request.user.username %}">{% translate "My Profile" %}</a>
             </li>
