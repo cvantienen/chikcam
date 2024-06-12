@@ -103,9 +103,9 @@ def stripe_webhook(request: HttpRequest):
         # Invalid signature
         return JsonResponse({'status': 'invalid signature'}, status=400)
 
-    # Handle the event
-    if event['type'] == 'payment_intent.succeeded':
-        session = event['data']['object']
-        handle_purchase(session)
+    if event["type"] == "payment_intent.succeeded":
+        payment_intent = event["data"]["object"]
+        connected_account_id = event["account"]
+        handle_purchase(connected_account_id, payment_intent)
 
     return JsonResponse({'status': 'success'}, status=200)

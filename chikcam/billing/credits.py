@@ -2,15 +2,15 @@ from chikcam.users.models import User
 import stripe
 
 
-def handle_purchase(session):
-    customer_id = session['customer']
-    payment_intent_id = session['payment_intent']
+def handle_purchase(customer_id, payment_intent):
+    # Fulfill the purchase
+    print('Connected account ID: ' + customer_id)
+    print(str(payment_intent))
 
     # Retrieve the payment intent to get the amount paid
-    payment_intent = stripe.PaymentIntent.retrieve(payment_intent_id)
-    amount_paid = payment_intent['amount_total']  # Amount is in cents
+    amount_paid = payment_intent
 
-    print(f'credits bought!: {amount_paid}')
+    print(f'credits bought!: {payment_intent}')
 
     # Calculate credits based on the amount paid
     credits_bought = amount_paid
