@@ -3,21 +3,21 @@
 {% load static %}
 
 {% block title %}
-  User: 
-  
+  User:
+
     {{ object.username }}
-  
-  
+
+
 {% endblock title %}
 {% block content %}
   <div class="container">
     <div class="row my-4">
       <div class="col-sm-12">
         <h3>
-        
-        
+
+
         Hey  {{ object.username }}!
-        
+
       </h3>
       <h6 class="text-muted">
         Welcome to Chickam
@@ -28,43 +28,67 @@
     </div>
   </div>
   {% if object == request.user %}
-    <!-- Action buttons -->
-    <div class="row">
-      <div class="justify-content-center align-content-center">
-        <div class="col-lg-8 col-12">
-          <stripe-buy-button
-            buy-button-id="buy_btn_1PP55PECrDARISveoTVMbl5D"
-            publishable-key="pk_test_51PNbaWECrDARISve9d1XN6gTisWzkxf0s3vhDzcMCv5oe3stbFHtaitcQ1X89dEdvm7KoHQDPcQM9OMLlH2r470m002y6Lv9WO"
-          >
-          </stripe-buy-button>
-          
-          <stripe-buy-button
-            buy-button-id="buy_btn_1PQCxPECrDARISveOz3JFMBq"
-            publishable-key="pk_test_51PNbaWECrDARISve9d1XN6gTisWzkxf0s3vhDzcMCv5oe3stbFHtaitcQ1X89dEdvm7KoHQDPcQM9OMLlH2r470m002y6Lv9WO"
-          >
-          </stripe-buy-button>
+    <div class="container">
+      <!-- Action buttons -->
+      <div class="row justify-content-center">
+        <div class="col-10 col-lg-4 my-2">
+          <div class="card bg-dark text-white" style="border: 1px solid #ff4d4d; border-radius: 15px; background: linear-gradient(145deg, #333333, #1a1a1a);">
+            <div class="card-body">
+              <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+                <h5 class="card-title text-center" style="font-weight: bold;">Get Chikcam Credits</h5>
+              </div>
+              <form action="{% url 'billing:checkout' %}" method="POST">
+                {% csrf_token %}
+                <div class="d-grid gap-2 d-flex inline-group justify-content-center">
+                  <img src="{% static 'images/icons/money-coin.svg' %}" class="icon-size align-self-center" alt="Credits" title="Credits">
+                  <button class="btn btn-danger" type="submit" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(255, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 0, 0, 0.19);">
+                    Purchase</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <div class="col-sm-12">
-          <div class="btn-group-lg">
-            <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
-            <a class="btn btn-info"
-               href="{% url 'account_email' %}"
-               role="button">E-Mail</a>
-            <a class="btn btn-success"
-               href="{% url 'mfa_index' %}"
-               role="button">MFA</a>
-            <a class="btn btn-warning"
-               href="{% url 'billing:checkout' %}"
-               role="button" type="submit">Get Credits</a>
-            <form action="{% url 'billing:checkout' %}" method="POST">
-              {% csrf_token %}
-              <button class="btn btn-danger" type="submit">Checkout</button>
-            </form>
-          </div>  
-        </div>  
+        <div class="col-10 col-lg-4 my-2">
+          <div class="card bg-dark text-white" style="border: 1px solid #e59b00; border-radius: 15px; background: linear-gradient(145deg, #333333, #1a1a1a);">
+            <div class="card-body">
+              <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+                <h5 class="card-title text-center" style="font-weight: bold;">Change Username</h5>
+              </div>
+              <div class="d-grid gap-2 d-flex inline-group justify-content-center">
+                <img src="{% static 'images/icons/user-laptop-2.svg' %}" class="icon-size align-self-center" alt="Credits" title="Credits">
+                <button class="btn btn-warning" type="submit" href="{% url 'account_email' %}" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(250,199,36,0.62), 0 6px 20px 0 rgba(241,195,10,0.42);">
+                  Change</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-10 col-lg-4 my-2">
+          <div class="card bg-dark text-white" style="border: 1px solid #203cea; border-radius: 15px; background: linear-gradient(145deg, #333333, #1a1a1a);">
+            <div class="card-body">
+              <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+                <h5 class="card-title text-center mx-2" style="font-weight: bold;">Get Raffle Tickets </h5>
+              </div>
+              <form action="{% url 'billing:checkout' %}" method="POST">
+                {% csrf_token %}
+                <div class="d-grid gap-2 d-flex inline-group justify-content-center">
+                  <img src="{% static 'images/icons/ticket-4.svg' %}" class="icon-size align-self-center" alt="Credits" title="Credits">
+                  <button class="btn btn-info" type="submit" href="{% url 'account_email' %}" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(21,218,236,0.62), 0 6px 20px 0 rgba(0,255,225,0.19);">
+                    Purchase
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card">
+            <a class="btn btn-dark bg-gradient bg-animate-dark btn-xl" href="{% url 'account_logout' %}" role="button">
+              Sign Out <img src="{% static 'images/icons/ticket-4.svg' %}" class="icon-size align-self-center" alt="Credits" title="Credits">
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
+    </div>    
     <!-- End Action buttons -->
   {% endif %}
-</div>
 {% endblock content %}

@@ -16,32 +16,19 @@
       </a>
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'chicks:home' %}">Chicks</a>
+            <a class="nav-link" href="{% url 'chicks:home' %}">Live Cam</a>
           </li>
         {% if request.user.is_authenticated %}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {% translate "Profile" %}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-              <li>
-                <span class="dropdown-item">
-                  <img src="{% static 'images/icons/coin.svg' %}" class="icon-size" alt="Credits">
-                  {{ request.user.credits }}
-                </span>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{% url 'users:detail' request.user.username %}">{% translate "My Profile" %}</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
-              </li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:detail' request.user.username %}">{{ request.user.username }}</a>
           </li>
+          <li class="nav-item">
+            <span class="nav-link badge me-0">
+              <img src="{% static 'images/icons/coin.svg' %}" class="icon-size align-content-center" alt="Credits" title="Credits">
+              <span class="credits-value mt-1">{{ request.user.credits }}</span>
+            </span>
+          </li>          
         {% else %}
           <li class="nav-item">
             {# URL provided by django-allauth/account/urls.py #}

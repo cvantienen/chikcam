@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="199.31761mm"
+   height="200.31641mm"
+   viewBox="0 0 199.31761 200.31641"
    version="1.1"
    id="svg1"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
@@ -32,7 +32,8 @@
      inkscape:window-x="488"
      inkscape:window-y="66"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     inkscape:export-bgcolor="#ffffff00" />
   <defs
      id="defs1">
     <pattern
@@ -59,14 +60,6 @@
          style="stroke-width:0.487199;stroke-linecap:square;paint-order:markers fill stroke;stop-color:#000000"
          d="m 371.6961,0 h 0.9938 v 66.1838 h -0.9938 z m -7.9084,0 h 1.1312 v 66.1838 h -1.1312 z m -7.9085,0 h 1.2687 v 66.1838 h -1.2687 z m -7.9084,0 h 1.4062 v 66.1838 h -1.4062 z m -7.9084,0 h 1.5436 v 66.1838 h -1.5436 z m -7.9084,0 h 1.681 v 66.1838 h -1.681 z m -7.9085,0 h 1.8185 v 66.1838 h -1.8185 z m -7.9084,0 h 1.9559 v 66.1838 h -1.9559 z m -7.9084,0 h 2.0934 v 66.1838 h -2.0934 z m -7.9085,0 h 2.2309 v 66.1838 h -2.2309 z m -7.9084,0 h 2.3683 v 66.1838 h -2.3683 z m -7.9084,0 h 2.5057 v 66.1838 h -2.5057 z m -7.9084,0 h 2.6431 v 66.1838 h -2.6431 z m -7.9085,0 h 2.7807 v 66.1838 h -2.7807 z m -7.9084,0 h 2.9181 v 66.1838 h -2.9181 z m -7.9084,0 h 3.0555 v 66.1838 h -3.0555 z m -7.9084,0 h 3.1929 v 66.1838 h -3.1929 z m -7.9085,0 h 3.3304 v 66.1838 h -3.3304 z m -7.9084,0 h 3.4679 v 66.1838 h -3.4679 z m -7.9084,0 h 3.6053 v 66.1838 h -3.6053 z m -7.9085,0 h 3.7428 v 66.1838 h -3.7428 z m -7.9084,0 h 3.8802 v 66.1838 h -3.8802 z m -7.9084,0 h 4.0176 v 66.1838 h -4.0176 z m -7.9084,0 h 4.1551 v 66.1838 h -4.1551 z m -7.9085,0 h 4.2926 v 66.1838 h -4.2926 z m -7.9084,0 h 4.43 v 66.1838 h -4.43 z m -7.9084,0 h 4.5674 v 66.1838 h -4.5674 z m -7.9084,0 h 4.7048 v 66.1838 h -4.7048 z m -7.9085,0 h 4.8424 v 66.1838 h -4.8424 z m -7.9084,0 h 4.9798 v 66.1838 h -4.9798 z m -7.9084,0 h 5.1172 v 66.1838 h -5.1172 z m -7.9084,0 h 5.2546 v 66.1838 h -5.2546 z m -7.9085,0 h 5.3921 v 66.1838 h -5.3921 z m -7.9084,0 h 5.5295 v 66.1838 h -5.5295 z m -7.9084,0 h 5.667 v 66.1838 h -5.667 z m -7.9085,0 h 5.8045 v 66.1838 h -5.8045 z m -7.9084,0 h 5.9419 v 66.1838 h -5.9419 z m -7.9084,0 h 6.0793 v 66.1838 h -6.0793 z m -7.9084,0 h 6.2167 v 66.1838 h -6.2167 z m -7.9085,0 h 6.3543 V 66.1838 H 63.2674 Z M 55.359,0 h 6.4917 V 66.1838 H 55.359 Z m -7.9084,0 h 6.6291 v 66.1838 h -6.6291 z m -7.9084,0 h 6.7665 v 66.1838 h -6.7665 z m -7.9085,0 h 6.904 v 66.1838 h -6.904 z m -7.9084,0 h 7.0415 v 66.1838 h -7.0415 z m -7.9084,0 h 7.1789 V 66.1838 H 15.8169 Z M 7.9084,0 h 7.3164 V 66.1838 H 7.9084 Z M 0,0 H 7.4538 V 66.1838 H 0 Z" />
     </pattern>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath52">
-      <path
-         id="path52"
-         style="stroke-width:0.1;stroke-linecap:square;paint-order:markers fill stroke;stop-color:#000000"
-         d="m -880.82767,-187.29769 h 1640.84 v 73.28155 h -1640.84 z" />
-    </clipPath>
     <linearGradient
        id="swatch32"
        inkscape:swatch="solid">
@@ -119,42 +112,13 @@
        gradientTransform="matrix(1,0,0,1.0049509,0,-0.71705918)"
        gradientUnits="userSpaceOnUse"
        spreadMethod="reflect" />
-    <meshgradient
-       inkscape:collect="always"
-       id="meshgradient9"
-       gradientUnits="userSpaceOnUse"
-       x="112.62017"
-       y="98.395264">
-      <meshrow
-         id="meshrow9">
-        <meshpatch
-           id="meshpatch9">
-          <stop
-             path="c 4.61367,0  9.22734,0  13.841,0"
-             style="stop-color:#ffffff;stop-opacity:1"
-             id="stop10" />
-          <stop
-             path="c 0,5.01091  0,10.0218  0,15.0327"
-             style="stop-color:#e41b74;stop-opacity:1"
-             id="stop11" />
-          <stop
-             path="c -4.61367,0  -9.22734,0  -13.841,0"
-             style="stop-color:#ffffff;stop-opacity:1"
-             id="stop12" />
-          <stop
-             path="c 0,-5.01091  0,-10.0218  0,-15.0327"
-             style="stop-color:#e41b74;stop-opacity:1"
-             id="stop13" />
-        </meshpatch>
-      </meshrow>
-    </meshgradient>
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient14"
        id="radialGradient15"
-       cx="82.788623"
+       cx="82.78862"
        cy="164.05098"
-       fx="82.788623"
+       fx="82.78862"
        fy="164.05098"
        r="63.263325"
        gradientTransform="matrix(0.62566272,0,0,0.85102692,24.440638,13.055361)"
@@ -163,32 +127,15 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-4.7223021,-44.676818)">
     <ellipse
-       style="fill:url(#radialGradient9);stroke:#af8301;stroke-width:4.26719982;stroke-dasharray:4.26719999, 4.26719999;stroke-opacity:1;fill-opacity:1;fill-rule:nonzero;stroke-dashoffset:0;paint-order:normal;stroke-linecap:round"
+       style="fill:url(#radialGradient9);fill-opacity:1;fill-rule:nonzero;stroke:#af8301;stroke-width:4.2672;stroke-linecap:round;stroke-dasharray:4.2672, 4.2672;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="path1"
        cx="104.38107"
        cy="144.83498"
        rx="97.525253"
        ry="98.024681" />
-    <text
-       xml:space="preserve"
-       style="font-size:19.05px;font-family:'Goudy Stout';-inkscape-font-specification:'Goudy Stout';fill:url(#meshgradient9);fill-opacity:1;fill-rule:nonzero;stroke:#9c9172;stroke-width:8.3947;stroke-linecap:round;stroke-dasharray:8.3947, 8.3947;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
-       x="110.18311"
-       y="113.00832"
-       id="text9"><tspan
-         sodipodi:role="line"
-         id="tspan9"
-         style="fill:url(#meshgradient9);fill-opacity:1;stroke:#9c9172;stroke-width:8.3947;stroke-opacity:1"
-         x="110.18311"
-         y="113.00832" /></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.05px;font-family:Harrington;-inkscape-font-specification:Harrington;white-space:pre;inline-size:23.7292;fill:#e41b74;fill-opacity:1;fill-rule:nonzero;stroke:#9c9172;stroke-width:0.529167;stroke-linecap:round;stroke-dasharray:0.529167, 0.529167;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
-       x="100.29488"
-       y="140.55409"
-       id="text13"
-       transform="matrix(4.3015931,0,0,3.8519255,-365.20626,-371.78176)" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:141.4px;line-height:0;font-family:'Kristen ITC';-inkscape-font-specification:'Kristen ITC';fill:url(#pattern37);fill-opacity:1;fill-rule:nonzero;stroke:url(#radialGradient15);stroke-width:0;stroke-linecap:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
