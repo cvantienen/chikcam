@@ -22,34 +22,39 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'chicks:home' %}">Chicks</a>
           </li>
-          {% if request.user.is_authenticated %}
-            <li class="nav-item">
-              <span class="nav-link">
-                <img src="{% static 'images/icons/coin.svg' %}" class="icon-size" alt="Credits">
-                {{ request.user.credits }}
-              </span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link"
-                 href="{% url 'users:detail' request.user.username %}">{% translate "My Profile" %}</a>
-            </li>
-            <li class="nav-item">
-              {# URL provided by django-allauth/account/urls.py #}
-              <a class="nav-link" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
-            </li>
-          {% else %}
-            <li class="nav-item">
-              {# URL provided by django-allauth/account/urls.py #}
-              <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
-            </li>
-            {% if ACCOUNT_ALLOW_REGISTRATION %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="sign-up-link" class="mx-3 nav-link btn btn-primary bg-animate-dark text-light" href="{% url 'account_signup' %}">
-                  {% translate "Sign Up" %} <img src="{% static 'images/icons/arrow-door-in.svg' %}" class="icon-size" alt="Sign Up"></a>
+        {% if request.user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {% translate "Profile" %}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+              <li>
+                <span class="dropdown-item">
+                  <img src="{% static 'images/icons/coin.svg' %}" class="icon-size" alt="Credits">
+                  {{ request.user.credits }}
+                </span>
               </li>
-            {% endif %}
+              <li>
+                <a class="dropdown-item" href="{% url 'users:detail' request.user.username %}">{% translate "My Profile" %}</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
+              </li>
+            </ul>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            {# URL provided by django-allauth/account/urls.py #}
+            <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
+          </li>
+          {% if ACCOUNT_ALLOW_REGISTRATION %}
+            <li class="nav-item">
+              {# URL provided by django-allauth/account/urls.py #}
+              <a id="sign-up-link" class="mx-3 nav-link btn btn-primary bg-animate-dark text-light" href="{% url 'account_signup' %}">
+                {% translate "Sign Up" %} <img src="{% static 'images/icons/arrow-door-in.svg' %}" class="icon-size" alt="Sign Up"></a>
+            </li>
           {% endif %}
+        {% endif %}
         </ul>
       </div>
     </div>
