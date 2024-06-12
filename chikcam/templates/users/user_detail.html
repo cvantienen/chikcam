@@ -68,11 +68,11 @@
               <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
                 <h5 class="card-title text-center mx-2" style="font-weight: bold;">Get Raffle Tickets </h5>
               </div>
-              <form action="{% url 'billing:checkout' %}" method="POST">
+              <form action="{% url 'billing:checkout_2' %}" method="POST">
                 {% csrf_token %}
                 <div class="d-grid gap-2 d-flex inline-group justify-content-center">
                   <img src="{% static 'images/icons/ticket-4.svg' %}" class="icon-size align-self-center" alt="Credits" title="Credits">
-                  <button class="btn btn-info" type="submit" href="{% url 'account_email' %}" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(21,218,236,0.62), 0 6px 20px 0 rgba(0,255,225,0.19);">
+                  <button class="btn btn-info" type="submit" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(21,218,236,0.62), 0 6px 20px 0 rgba(0,255,225,0.19);">
                     Purchase
                   </button>
                 </div>
@@ -91,4 +91,5 @@
     </div>    
     <!-- End Action buttons -->
   {% endif %}
+  </div>
 {% endblock content %}

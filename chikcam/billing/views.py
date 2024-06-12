@@ -47,6 +47,37 @@ def checkout(request: HttpRequest):
 
 
 @login_required
+def checkout_2(request: HttpRequest):
+    if request.method == "POST":
+        stripe.api_key = settings.STRIPE_TEST_KEY
+        if request.user.stripe_customer_id:
+            customer_id = request.user.stripe_customer_id
+        else:
+            customer = stripe.Customer.create(
+                email=request.user.email
+            )
+            customer_id = customer['id']
+            request.user.stripe_customer_id = customer_id
+            request.user.save()
+        session = stripe.checkout.Session.create(
+            customer=customer_id,
+            line_items=[
+                {
+                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                    'price': 'price_1PQCvCECrDARISveg6YFGR2w',
+                    'quantity': 1,
+                },
+            ],
+            mode='payment',
+            success_url=request.build_absolute_uri(
+                reverse('billing:checkout_success')) + '?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url=request.build_absolute_uri(reverse('chicks:home')),
+        )
+        return redirect(session.url, code=303)
+    return render(request, "billing/checkout.html")
+
+
+@login_required
 def checkout_success(request: HttpRequest):
     session_id = request.GET['session_id']
     stripe.api_key = settings.STRIPE_TEST_KEY
