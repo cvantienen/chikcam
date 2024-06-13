@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 
-from .credits import handle_purchase
+from .credits import credit_purchase
 import stripe
 
 
@@ -39,11 +39,11 @@ def checkout(request: HttpRequest):
             ],
             mode='payment',
             success_url=request.build_absolute_uri(
-                reverse('chicks:stream')) + '?session_id={CHECKOUT_SESSION_ID}',
+                reverse('chicks:home')) + '?session_id={CHECKOUT_SESSION_ID}',
             cancel_url=request.build_absolute_uri(reverse('chicks:home')),
         )
         return redirect(session.url, code=303)
-    return render(request, "billing/checkout.html")
+    return render(request, "chicks/stream.html")
 
 
 @login_required
@@ -64,7 +64,7 @@ def checkout_2(request: HttpRequest):
             line_items=[
                 {
                     # raffle
-                    'price': 'price_1PQCvCECrDARISveg6YFGR2w',
+                    'price': 'price_1PP7hlECrDARISveU39gU1x1',
                     'quantity': 1,
                 },
             ],
@@ -74,7 +74,7 @@ def checkout_2(request: HttpRequest):
             cancel_url=request.build_absolute_uri(reverse('chicks:home')),
         )
         return redirect(session.url, code=303)
-    return render(request, "billing/checkout.html")
+    return render(request, "chicks/stream.html")
 
 
 @login_required
@@ -109,6 +109,6 @@ def stripe_webhook(request):
         customer_id = payment_intent['customer']
         amount_paid = payment_intent['amount_received']  # Ensure this is the correct field for your use case
 
-        handle_purchase(customer_id, amount_paid)
+        credit_purchase(customer_id, amount_paid)
 
     return JsonResponse({'status': 'success'}, status=200)

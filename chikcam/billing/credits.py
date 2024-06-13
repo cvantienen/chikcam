@@ -1,16 +1,18 @@
 from django.db import transaction
 from django.http import JsonResponse
 from django.conf import settings
+
 import stripe
+
+from .models import Payment
 from chikcam.users.models import User
 
 
-def handle_purchase(customer_id, amount_paid):
-    print('Handling purchase')
+def credit_purchase(customer_id, amount_paid):
+    print('Handling Credit purchase')
     # Convert amount_paid to the correct unit if necessary
     # Assuming amount_paid is in cents and 100 cents = 1 credit
-    credits_bought = int(amount_paid / 100)  # Convert from cents to credits
-
+    credits_bought = int(amount_paid)  # Convert from cents to credits
     try:
         with transaction.atomic():
             # Retrieve the user associated with this customer_id
@@ -29,33 +31,32 @@ def handle_purchase(customer_id, amount_paid):
         return JsonResponse({'status': 'error', 'message': 'Failed to add credits'}, status=500)
 
 
+def record_purchase(customer_id, payment_intent):
+    # Assuming you can get the user based on the customer_id
+    user = User.objects.get(stripe_customer_id=customer_id)
 
-def handle_button_press(request, button_type):
-    # Check if the request is POST
-    if request.method != 'POST':
-        return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
+    # Assuming payment_intent is an object with the necessary information
+    Payment.objects.create(
+        user=user,
+        stripe_payment_intent_id=payment_intent.id,
+        amount=payment_intent.amount / 100,  # Convert from cents to dollars
+        currency=payment_intent.currency
+    )
 
-    user = request.user
-    button_costs = {
-        'button1': 100,
-        'button2': 50,
-        # Add more buttons and their costs here
-    }
 
-    cost = button_costs.get(button_type)
-
-    if cost is None:
-        return JsonResponse({'status': 'error', 'message': 'Invalid button type'}, status=400)
-
-    if user.credits < cost:
-        return JsonResponse({'status': 'error', 'message': 'Insufficient credits'}, status=403)
-
-    # Deduct credits
-    user.credits -= cost
-    user.save()
-
-    # Perform the action associated with the button here
-    # For example, turning on a light, playing a sound, etc.
-
-    return JsonResponse({'status': 'success', 'message': f'{button_type} activated', 'remaining_credits': user.credits},
-                        status=200)
+def use_credits(customer_id, credit_amount):
+    print('Handling Credits Used')
+    credits_used = int(credit_amount)  # Convert from cents to credits
+    try:
+        with transaction.atomic():
+            user = User.objects.select_for_update().get(stripe_customer_id=customer_id)
+            if user.credits < credits_used:
+                return False  # Not enough credits
+            user.credits -= credits_used
+            user.save()
+        return True  # Successfully used credits
+    except User.DoesNotExist:
+        raise ValueError('User not found')
+    except Exception as e:
+        print(f"Error using credits: {str(e)}")
+        raise

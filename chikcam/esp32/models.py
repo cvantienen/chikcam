@@ -11,6 +11,8 @@ class ActionButton(models.Model):
     )
     action_type = models.CharField(max_length=50, choices=ACTION_CHOICES)
     activation_count = models.IntegerField(default=0)
+    last_activated = models.DateTimeField(auto_now=True)
+    cost = models.IntegerField(default=0)
 
     def __str__(self):
         return f"{self.action_type} - Activations: {self.activation_count}"
@@ -18,3 +20,4 @@ class ActionButton(models.Model):
     def increment_activation(self):
         self.activation_count += 1
         self.save()
+
