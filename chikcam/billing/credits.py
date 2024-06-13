@@ -1,22 +1,19 @@
 from chikcam.users.models import User
-import math
+from django.http import JsonResponse
 
 
-def handle_purchase(customer_id, payment_intent):
-    # Fulfill the purchase
-    print('Connected account ID: ' + customer_id)
-    print(str(payment_intent))
-
-    # Retrieve the payment intent to get the amount paid
-    amount_paid = payment_intent['amount']
-
-    print(f'Amount paid: {amount_paid}')
-
-    credits_bought = round(amount_paid)  # Round to the nearest whole number
-
+def handle_purchase(customer_id, amount_paid):
     # Retrieve the user associated with this customer_id
-    user = User.objects.get(stripe_customer_id=customer_id)
+    try:
+        user = User.objects.get(stripe_customer_id=customer_id)
+    except User.DoesNotExist:
+        return JsonResponse({'status': 'error', 'message': 'User not found'}, status=404)
+
+    # Calculate credits based on the amount paid
+    credits_bought = int(amount_paid)  # Assuming you want to add credits as whole numbers
 
     # Update the user's credits
     user.credits += credits_bought
     user.save()
+
+    return JsonResponse({'status': 'success', 'credits_added': credits_bought}, status=200)

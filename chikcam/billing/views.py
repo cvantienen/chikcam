@@ -86,7 +86,7 @@ def checkout_success(request: HttpRequest):
 
 
 @csrf_exempt
-def stripe_webhook(request: HttpRequest):
+def stripe_webhook(request):
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
@@ -102,9 +102,19 @@ def stripe_webhook(request: HttpRequest):
         # Invalid signature
         return JsonResponse({'status': 'invalid signature'}, status=400)
 
-    if event["type"] == "payment_intent.succeeded":
-        payment_intent = event["data"]["object"]
-        connected_account_id = payment_intent.get('account')  # Adjust this line
-        handle_purchase(connected_account_id, payment_intent)
+    # Handle successful payment events
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        customer_id = session['customer']
+        payment_intent_id = session['payment_intent']
+
+        # Retrieve payment intent to get the amount paid
+        payment_intent = stripe.PaymentIntent.retrieve(payment_intent_id)
+        amount_paid = payment_intent['amount'] / 100  # Convert from cents to dollars
+
+        # Process and add credits to the user
+        handle_purchase(customer_id, amount_paid)
 
     return JsonResponse({'status': 'success'}, status=200)
+
+
