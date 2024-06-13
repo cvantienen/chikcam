@@ -110,10 +110,10 @@ def stripe_webhook(request):
 
         # Retrieve payment intent to get the amount paid
         payment_intent = stripe.PaymentIntent.retrieve(payment_intent_id)
-        amount_paid = payment_intent['amount'] / 100  # Convert from cents to dollars
+        credits_bought = payment_intent['amount'] # Convert from cents to dollars
 
         # Process and add credits to the user
-        handle_purchase(customer_id, amount_paid)
+        handle_purchase(customer_id, credits_bought)
 
     return JsonResponse({'status': 'success'}, status=200)
 
