@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .credits import handle_purchase
 import stripe
 
+
 # Create your views here.
 @login_required
 def billing_home(request: HttpRequest):
@@ -102,19 +103,12 @@ def stripe_webhook(request):
         # Invalid signature
         return JsonResponse({'status': 'invalid signature'}, status=400)
 
-    # Handle successful payment events
-    if event['type'] == 'checkout.session.completed':
-        session = event['data']['object']
-        customer_id = session['customer']
-        payment_intent_id = session['payment_intent']
+    # Process the event
+    if event['type'] == 'payment_intent.succeeded':
+        payment_intent = event['data']['object']
+        customer_id = payment_intent['customer']
+        amount_paid = payment_intent['amount_received']  # Ensure this is the correct field for your use case
 
-        # Retrieve payment intent to get the amount paid
-        payment_intent = stripe.PaymentIntent.retrieve(payment_intent_id)
-        credits_bought = payment_intent['amount'] # Convert from cents to dollars
-
-        # Process and add credits to the user
-        handle_purchase(customer_id, credits_bought)
+        handle_purchase(customer_id, amount_paid)
 
     return JsonResponse({'status': 'success'}, status=200)
-
-
