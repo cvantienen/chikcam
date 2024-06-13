@@ -8,7 +8,6 @@ from django.views.decorators.csrf import csrf_exempt
 from .credits import handle_purchase
 import stripe
 
-
 # Create your views here.
 @login_required
 def billing_home(request: HttpRequest):
@@ -32,14 +31,14 @@ def checkout(request: HttpRequest):
             customer=customer_id,
             line_items=[
                 {
-                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                    # Credits
                     'price': 'price_1PP7hlECrDARISveU39gU1x1',
                     'quantity': 1,
                 },
             ],
             mode='payment',
             success_url=request.build_absolute_uri(
-                reverse('billing:checkout_success')) + '?session_id={CHECKOUT_SESSION_ID}',
+                reverse('chicks:stream')) + '?session_id={CHECKOUT_SESSION_ID}',
             cancel_url=request.build_absolute_uri(reverse('chicks:home')),
         )
         return redirect(session.url, code=303)
@@ -63,7 +62,7 @@ def checkout_2(request: HttpRequest):
             customer=customer_id,
             line_items=[
                 {
-                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                    # raffle
                     'price': 'price_1PQCvCECrDARISveg6YFGR2w',
                     'quantity': 1,
                 },
@@ -105,7 +104,7 @@ def stripe_webhook(request: HttpRequest):
 
     if event["type"] == "payment_intent.succeeded":
         payment_intent = event["data"]["object"]
-        connected_account_id = event["account"]
+        connected_account_id = payment_intent.get('account')  # Adjust this line
         handle_purchase(connected_account_id, payment_intent)
 
     return JsonResponse({'status': 'success'}, status=200)

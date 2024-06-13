@@ -1,5 +1,5 @@
 from chikcam.users.models import User
-import stripe
+import math
 
 
 def handle_purchase(customer_id, payment_intent):
@@ -8,12 +8,11 @@ def handle_purchase(customer_id, payment_intent):
     print(str(payment_intent))
 
     # Retrieve the payment intent to get the amount paid
-    amount_paid = payment_intent
+    amount_paid = payment_intent['amount']
 
-    print(f'credits bought!: {payment_intent}')
+    print(f'Amount paid: {amount_paid}')
 
-    # Calculate credits based on the amount paid
-    credits_bought = amount_paid
+    credits_bought = round(amount_paid)  # Round to the nearest whole number
 
     # Retrieve the user associated with this customer_id
     user = User.objects.get(stripe_customer_id=customer_id)
