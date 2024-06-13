@@ -3,6 +3,8 @@ from django.http import JsonResponse
 
 
 def handle_purchase(customer_id, amount_paid):
+
+    print('handling purchase')
     # Retrieve the user associated with this customer_id
     try:
         user = User.objects.get(stripe_customer_id=customer_id)
