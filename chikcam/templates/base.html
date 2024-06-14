@@ -14,6 +14,7 @@
         content="Django Chicken Livestream Website" />
   <meta name="author"
         content="Cody Joseph van Tienen" />
+  <meta name="csrf-token" content="{{ csrf_token }}">
   <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
   {% block css %}
     <!-- Latest compiled and minified Bootstrap CSS -->
@@ -49,7 +50,7 @@
   <script defer src="{% static 'js/notification.js' %}"></script>
   <script defer src="{% static 'js/project.js' %}"></script>
     <!-- Other head elements -->
-    <meta name="csrf-token" content="{{ csrf_token }}">
+    
 {% endblock javascript %}
 </head>
 <body class="{% block bodyclass %} main-bg-dark text-light {% endblock bodyclass %}" id="page-top">

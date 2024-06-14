@@ -161,3 +161,28 @@
   width: 28px; /* Adjust the width as needed */
   vertical-align: middle;
 }
+
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1050;
+}
+
+.notification-message {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  color: #fff;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.notification-success {
+  background-color: #28a745;
+}
+
+.notification-error {
+  background-color: #dc3545;
+}
