@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.http import JsonResponse, HttpRequest
 from django.conf import settings
+from django.views.decorators.csrf import requires_csrf_token
 
 from .models import ActionButton
 from chikcam.billing.credits import use_credits
@@ -30,6 +31,7 @@ def all_buttons_status(request: HttpRequest) -> JsonResponse:
 
 
 @login_required()
+@requires_csrf_token
 def increment_button_activation(request, action_type):
     if request.method == 'POST':
         try:

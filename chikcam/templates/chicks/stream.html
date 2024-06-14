@@ -18,28 +18,23 @@
           <div class="text-center">
             <form action="{% url 'esp32:increment_action' 'feed_snack' %}" method="post">
               {% csrf_token %}
-              <button 
-                onclick="activateButton('feed_snack')" type="submit" class="btn btn-dark my-3 w-100">Feed Snack</button>
+              <button onclick="event.preventDefault(); activateButton('feed_snack');" type="submit" class="btn btn-dark my-3 w-100">Feed Snack</button>
             </form>
             <form action="{% url 'esp32:increment_action' 'flashlight' %}" method="post">
               {% csrf_token %}
-              <button 
-                onclick="activateButton('flashlight')" type="submit" class="btn btn-secondary my-3 w-100">Flashlight</button>
+              <button onclick="event.preventDefault(); activateButton('flashlight');" type="submit" class="btn btn-secondary my-3 w-100">Flash Light</button>
             </form>
             <form action="{% url 'esp32:increment_action' 'text_to_talk' %}" method="post">
               {% csrf_token %}
-              <button 
-                onclick="activateButton('text_to_talk')" type="submit" class="btn btn-info my-3 w-100">Text to Talk</button>
+              <button onclick="event.preventDefault(); activateButton('text_to_talk');" type="submit" class="btn btn-info my-3 w-100">Text to Talk</button> 
             </form>
             <form action="{% url 'esp32:increment_action' 'play_song' %}" method="post">
               {% csrf_token %}
-              <button 
-                onclick="activateButton('play_song')" type="submit" class="btn btn-success my-3 w-100">Play Song</button>
+              <button onclick="event.preventDefault(); activateButton('play_song');" type="submit" class="btn btn-success my-3 w-100">Play Song</button>
             </form>
             <form action="{% url 'esp32:increment_action' 'take_pic' %}" method="post">
               {% csrf_token %}
-              <button 
-              onclick="activateButton('take_pic')" type="submit" class="btn btn-warning my-3 w-100">Take a Pic</button>
+              <button onclick="event.preventDefault(); activateButton('take_pic');" type="submit" class="btn btn-warning my-3 w-100">Take a Pic</button>
             </form>
           </div>
         </div>

@@ -26,29 +26,30 @@
 <!-- This file stores project-specific CSS -->
   <link href="{% static 'css/project.css' %}" rel="stylesheet" />
   <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-
+    
 {% endblock css %}
 <!-- Le javascript
     ================================================== -->
 {# Placed at the top of the document so pages load faster with defer #}
 {% block javascript %}
-<script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
-<script src="https://js.stripe.com/v3/"></script>
-<!-- Bootstrap JS -->
-<script defer
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
-        integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"></script>
-<!-- Your stuff: Third-party javascript libraries go here -->
-
-<!-- place project specific Javascript in this file -->
-<script defer src="{% static 'js/anime.js' %}"></script>
-<script defer src="{% static 'js/notification.js' %}"></script>
-<script defer src="{% static 'js/project.js' %}"></script>
-
+  <!-- Bootstrap JS -->
+  <script defer
+          src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
+          integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <!-- Your stuff: Third-party javascript libraries go here -->
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>  
+  
+  <!-- place project specific Javascript in this file -->
+  <script defer src="{% static 'js/anime.js' %}"></script>
+  <script defer src="{% static 'js/notification.js' %}"></script>
+  <script defer src="{% static 'js/project.js' %}"></script>
+    <!-- Other head elements -->
+    <meta name="csrf-token" content="{{ csrf_token }}">
 {% endblock javascript %}
 </head>
 <body class="{% block bodyclass %} main-bg-dark text-light {% endblock bodyclass %}" id="page-top">
