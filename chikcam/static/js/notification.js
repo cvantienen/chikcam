@@ -23,13 +23,11 @@ function activateButton(actionType) {
   });
 }
 
-// Function to display notifications
-function displayNotification(message, type) {
-  if (type === 'success') {
-    // Display a success notification
-    alert(`Success: ${message}`);
-  } else if (type === 'error') {
-    // Display an error notification
-    alert(`Error: ${message}`);
-  }
+// Function to display a message
+function displayNotification(message, tags) {
+    const messagesContainer = document.getElementById('messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `alert alert-${tags} alert-dismissible`;
+    messageDiv.innerHTML = `${message} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+    messagesContainer.appendChild(messageDiv);
 }

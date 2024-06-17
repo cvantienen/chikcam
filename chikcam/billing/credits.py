@@ -1,8 +1,5 @@
 from django.db import transaction
 from django.http import JsonResponse
-from django.conf import settings
-
-import stripe
 
 from .models import Payment
 from chikcam.users.models import User
@@ -45,7 +42,7 @@ def record_purchase(customer_id, payment_intent):
 
 
 def use_credits(customer_id, credit_amount):
-    print('Handling Credits Used')
+    print(f'Handling Credits Used: Amount of {credit_amount}')
     credits_used = int(credit_amount)  # Convert from cents to credits
     try:
         with transaction.atomic():
@@ -53,6 +50,7 @@ def use_credits(customer_id, credit_amount):
             if user.credits < credits_used:
                 return False  # Not enough credits
             user.credits -= credits_used
+            print(f'Credits used: {credits_used}, credits remaining: {user.credits}')
             user.save()
         return True  # Successfully used credits
     except User.DoesNotExist:
