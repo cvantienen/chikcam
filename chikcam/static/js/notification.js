@@ -26,8 +26,30 @@ function activateButton(actionType) {
 // Function to display a message
 function displayNotification(message, tags) {
     const messagesContainer = document.getElementById('messages');
+    if (!messagesContainer) {
+        console.error('Messages container not found');
+        return;
+    }
     const messageDiv = document.createElement('div');
-    messageDiv.className = `alert alert-${tags} alert-dismissible`;
+    messageDiv.className = `alert alert-${tags} alert-dismissible justify-content-center text-center mb-3`;
     messageDiv.innerHTML = `${message} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
     messagesContainer.appendChild(messageDiv);
+
+    // Automatically remove the message after 5 seconds
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 5000);
 }
+
+// Automatically remove messages after 5 seconds on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const messagesContainer = document.getElementById('messages');
+  if (messagesContainer) {
+    const messages = messagesContainer.querySelectorAll('.alert');
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        message.remove();
+      }, 5000); // Adjust the timeout duration as needed
+    });
+  }
+});

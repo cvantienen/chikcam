@@ -42,20 +42,14 @@ def increment_button_activation(request, action_type):
             customer_id = request.user.stripe_customer_id
             if use_credits(customer_id, cost):
                 button.increment_activation()
-                messages.success(request, f"Credits used to activate {button.action_type}.")
                 return JsonResponse({"success": True, "message": f"Credits used to activate {button.action_type}."}, status=200)
             else:
-                messages.error(request, "Not enough credits")
                 return JsonResponse({"success": False, "error": "Not enough credits"}, status=403)
         except ActionButton.DoesNotExist:
-            messages.error(request, "Button not found")
             return JsonResponse({"success": False, "error": "Button not found"}, status=404)
         except ValueError as e:
-            messages.error(request, str(e))
             return JsonResponse({"success": False, "error": str(e)}, status=404)
         except Exception as e:
-            messages.error(request, "Failed to use credits")
             return JsonResponse({"success": False, "error": "Failed to use credits"}, status=500)
     else:
-        messages.error(request, "Method not allowed")
         return JsonResponse({"increment_button_activation error": "Method not allowed"}, status=405)

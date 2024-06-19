@@ -54,8 +54,8 @@
 {% endblock javascript %}
 </head>
 <body class="{% block bodyclass %} main-bg-dark text-light {% endblock bodyclass %}" id="page-top">
-  {% block body %}
   {% include 'sections/nav.html' %}
+  {% block body %}
   <div class="container">
     {% if messages %}
       {% for message in messages %}

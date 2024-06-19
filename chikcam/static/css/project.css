@@ -162,6 +162,12 @@
   vertical-align: middle;
 }
 
+.icon-btn {
+  height: 36px; /* Adjust the height as needed */
+  width: 36px; /* Adjust the width as needed */
+  vertical-align: middle;
+}
+
 .notification-container {
   position: fixed;
   top: 20px;
