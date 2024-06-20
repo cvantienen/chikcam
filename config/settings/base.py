@@ -89,8 +89,8 @@ LOCAL_APPS = [
     "chikcam.users",
     "chikcam.chicks",
     "chikcam.esp32",
-    "chikcam.billing"
-    # Your stuff: custom apps go here
+    "chikcam.billing",
+    "chikcam.music_player",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

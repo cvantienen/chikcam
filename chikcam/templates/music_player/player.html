@@ -1,0 +1,46 @@
+<!-- music_player/templates/music_player/card.html -->
+<div class="card music-player-card">
+    <div class="card-body">
+        <h5 class="card-title">Music Player</h5>
+        <div id="stations">
+            {% for station in stations %}
+            <div class="station" data-station-id="{{ station.id }}">
+                <h6>{{ station.name }}</h6>
+                <button onclick="playStation({{ station.id }})" class="btn btn-primary btn-sm">Play</button>
+            </div>
+            {% endfor %}
+        </div>
+        <div id="player">
+            <audio id="audio-player" controls></audio>
+            <button onclick="pause()" class="btn btn-secondary btn-sm">Pause</button>
+            <button onclick="resume()" class="btn btn-secondary btn-sm">Resume</button>
+        </div>
+    </div>
+</div>
+<script>
+    let currentStation = null;
+    let audioPlayer = document.getElementById('audio-player');
+
+    function playStation(stationId) {
+        if (currentStation !== stationId) {
+            currentStation = stationId;
+            // Fetch the tracks for the station and start playing
+            fetch(`/music/station/${stationId}/tracks/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.tracks.length > 0) {
+                        audioPlayer.src = data.tracks[0].file;
+                        audioPlayer.play();
+                    }
+                });
+        }
+    }
+
+    function pause() {
+        audioPlayer.pause();
+    }
+
+    function resume() {
+        audioPlayer.play();
+    }
+</script>
