@@ -1,26 +1,36 @@
 <!-- music_player/templates/music_player/card.html -->
-<div class="card music-player-card">
+{% load static %}
+<div class="card m-3 p-3 justify-content-center bg-c-dark order-card" id="fizzle_title_2">
+    <h5 class="pink-gradient text-center mb-1">Chikcam Radio</h5>
     <div class="card-body">
-        <h5 class="card-title">Music Player</h5>
-        <div id="stations">
+        <div id="stations" class="d-flex flex-column align-items-center">
             {% for station in stations %}
-            <div class="station" data-station-id="{{ station.id }}">
-                <h6>{{ station.name }}</h6>
-                <button onclick="playStation({{ station.id }})" class="btn btn-primary btn-sm">Play</button>
+            <div class="station mb-3 text-center" data-station-id="{{ station.id }}">
+                <h6 class="mb-2">{{ station.name }}</h6>
+                <button onclick="playStation({{ station.id }})" class="btn btn-primary btn-sm">
+                    <img src="{% static 'images/icons/play.svg' %}" alt="Play" class="icon-btn">
+                </button>
             </div>
             {% endfor %}
         </div>
-        <div id="player">
-            <audio id="audio-player" controls></audio>
-            <button onclick="pause()" class="btn btn-secondary btn-sm">Pause</button>
-            <button onclick="resume()" class="btn btn-secondary btn-sm">Resume</button>
+    </div>
+    <div class="card-footer">
+        <div id="player" class="mt-1 text-center">
+            <audio id="audio-player" controls class="w-75"></audio>
+            <div class="d-flex justify-content-around mt-3">
+                <button onclick="pause()" class="btn btn-secondary btn-sm">
+                    <img src="{% static 'images/icons/pause.svg' %}" alt="Pause" class="icon-btn">
+                </button>
+                <button onclick="resume()" class="btn btn-secondary btn-sm">
+                    <img src="{% static 'images/icons/play.svg' %}" alt="Resume" class="icon-btn">
+                </button>
+            </div>
         </div>
     </div>
 </div>
 <script>
     let currentStation = null;
     let audioPlayer = document.getElementById('audio-player');
-
     function playStation(stationId) {
         if (currentStation !== stationId) {
             currentStation = stationId;
@@ -35,11 +45,9 @@
                 });
         }
     }
-
     function pause() {
         audioPlayer.pause();
     }
-
     function resume() {
         audioPlayer.play();
     }

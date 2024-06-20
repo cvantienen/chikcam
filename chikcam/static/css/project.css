@@ -129,12 +129,15 @@
     background: linear-gradient(9deg,#FF5370,#3e3c38);
 }
 
+.bg-c-dark {
+    background: linear-gradient(9deg, #8e8f8b,#3e3c38);
+}
+
 
 .card {
     border-radius: 5px;
     -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
     box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
-    margin-bottom: 30px;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
@@ -191,4 +194,9 @@
 
 .notification-error {
   background-color: #dc3545;
+}
+
+.bg-grey {
+  background: linear-gradient(0deg, rgb(142, 143, 139) 0%, rgb(96, 95, 95) 33%, rgba(75, 75, 75, 0.92) 33%);
+  border-color: #badce3;
 }

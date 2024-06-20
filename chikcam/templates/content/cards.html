@@ -1,47 +1,39 @@
 {% load static %}
 <div class="container">
   <div class="row my-4">
-    <div class="col-md-4 col-xl-3" id="bounce_one">
-      <div class="card bg-c-green order-card">
-        <div class="card-block">
-          <h6 class="m-b-20"><img class="icon-size" src="{% static 'images/icons/feather-2.svg' %}" alt="Accounts:">
-             Chickens</h6>
+    <div class="col-md-4" id="bounce_two">
+      <div class="card bg-c-green order-card h-100">
+        <div class="card-block text-center">
+          <h6 class="lead fw-semibold">Chickens</h6>
           <hr>
-          <h2 class="text-right">
-            9</h2>
+          <div class="d-flex justify-content-center align-items-center">
+            <img class="icon-size me-2" src="{% static 'images/icons/feather-2.svg' %}" alt="Accounts:">
+            <h5 class="display-6 fw-bold me-2">7</h5>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4 col-xl-3" id="bounce_two">
-      <div class="card bg-c-pink order-card border-2">
-        <div class="card-block">
-          <h6 class="m-b-20"><img class="icon-size" src="{% static 'images/icons/rotation-360.svg' %}" alt="Accounts:">
-             Breeds</h6>
+    <div class="col-md-4" id="bounce_three">
+      <div class="card bg-c-yellow order-card h-100">
+        <div class="card-block text-center">
+          <h6 class="lead fw-semibold">Eggs Laid</h6>
           <hr>
-          <h5 class="text-right">
-            <small>Silkie, Australorp, Sapphire</small></h5>
+          <div class="d-flex justify-content-center align-items-center">
+            <img class="icon-size me-2" src="{% static 'images/icons/grid-circle-plus.svg' %}" alt="Accounts:">
+            <h5 class="display-6 fw-bold me-2"><span>0</span></h5>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4 col-xl-3" id="bounce_three">
-      <div class="card bg-c-yellow order-card">
-        <div class="card-block">
-          <h6 class="m-b-20"><img class="icon-size" src="{% static 'images/icons/grid-circle-plus.svg' %}" alt="Accounts:">
-             Eggs Laid</h6>
+    <div class="col-md-4" id="bounce_four">
+      <div class="card bg-c-blue order-card h-100">
+        <div class="card-block text-center">
+          <p class="lead fw-semibold">Members</p>
           <hr>
-          <h2 class="text-right">
-            <span>{{ active_users_count }}</span></h2>          
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-xl-3" id="bounce_four">
-      <div class="card bg-c-blue order-card">
-        <div class="card-block">
-          <h6 class="m-b-20"><img class="icon-size" src="{% static 'images/icons/accessibility-2.svg' %}" alt="Accounts:">
-             Active Members</h6>
-          <hr>
-          <h2 class="text-right">
-            <span>{{ user_count }}</span></h2>
+          <div class="d-flex justify-content-center align-items-center">
+            <img class="icon-size me-2" src="{% static 'images/icons/accessibility-2.svg' %}" alt="Accounts:">
+            <h5 class="display-6 fw-bold me-2"><span>{{ user_count }}</span></h5>
+          </div>
         </div>
       </div>
     </div>
