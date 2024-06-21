@@ -23,12 +23,17 @@
     </div>
 </div>
 <script>
-    let currentStation = "{% if stations %}{{ stations.0.name|slugify }}{% else %}null{% endif %}";
     let audioPlayer = document.getElementById('audio-player');
     let stations = [{% for station in stations %}"{{ station.name|slugify }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
     let currentIndex = 0;
+    let currentStation = stations.length > 0 ? stations[currentIndex] : null;
 
     function playStation(stationName) {
+        if (!stationName) {
+            console.error("Station name is null or undefined");
+            return;
+        }
+        console.log("Playing station:", stationName);
         currentStation = stationName;
         fetch(`/media/tracks/${stationName}/`)
             .then(response => response.json())
@@ -36,7 +41,12 @@
                 if (data.tracks.length > 0) {
                     audioPlayer.src = data.tracks[0].file;
                     audioPlayer.play();
+                } else {
+                    console.error("No tracks found for station:", stationName);
                 }
+            })
+            .catch(error => {
+                console.error("Error fetching tracks for station:", stationName, error);
             });
     }
 
@@ -49,6 +59,11 @@
     function nextStation() {
         currentIndex = (currentIndex + 1) % stations.length;
         currentStation = stations[currentIndex];
+        playStation(currentStation);
+    }
+
+    // Initialize the player with the first station if available
+    if (currentStation) {
         playStation(currentStation);
     }
 </script>
