@@ -3,52 +3,52 @@
 <div class="card m-3 p-3 justify-content-center bg-c-dark order-card" id="fizzle_title_2">
     <h5 class="pink-gradient text-center mb-1">Chikcam Radio</h5>
     <div class="card-body">
-        <div id="stations" class="d-flex flex-column align-items-center">
-            {% for station in stations %}
-            <div class="station mb-3 text-center" data-station-id="{{ station.id }}">
-                <h6 class="mb-2">{{ station.name }}</h6>
-                <button onclick="playStation({{ station.id }})" class="btn btn-primary btn-sm">
-                    <img src="{% static 'images/icons/play.svg' %}" alt="Play" class="icon-btn">
-                </button>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="card-footer">
-        <div id="player" class="mt-1 text-center">
+        <div id="player" class="mt-3 text-center">
             <audio id="audio-player" controls class="w-75"></audio>
-            <div class="d-flex justify-content-around mt-3">
-                <button onclick="pause()" class="btn btn-secondary btn-sm">
-                    <img src="{% static 'images/icons/pause.svg' %}" alt="Pause" class="icon-btn">
+            <div class="d-flex justify-content-center mt-3">
+                <button onclick="prevStation()" class="btn btn-sm mx-2 d-flex flex-column align-items-center">
+                    <img src="{% static 'images/icons/circle-arrow-left.svg' %}" alt="Previous" class="icon-btn">
+                    <small>Previous</small>
                 </button>
-                <button onclick="resume()" class="btn btn-secondary btn-sm">
-                    <img src="{% static 'images/icons/play.svg' %}" alt="Resume" class="icon-btn">
+                <button onclick="playStation(currentStation)" class="btn btn-sm mx-2 d-flex flex-column align-items-center">
+                    <img src="{% static 'images/icons/button-power.svg' %}" alt="Power On" class="icon-btn">
+                    <small>Power</small>
+                </button>
+                <button onclick="nextStation()" class="btn btn-sm mx-2 d-flex flex-column align-items-center">
+                    <img src="{% static 'images/icons/circle-arrow-right.svg' %}" alt="Next" class="icon-btn">
+                    <small>Next</small>
                 </button>
             </div>
         </div>
     </div>
 </div>
 <script>
-    let currentStation = null;
+    let currentStation = "{% if stations %}{{ stations.0.name|slugify }}{% else %}null{% endif %}";
     let audioPlayer = document.getElementById('audio-player');
-    function playStation(stationId) {
-        if (currentStation !== stationId) {
-            currentStation = stationId;
-            // Fetch the tracks for the station and start playing
-            fetch(`/music/station/${stationId}/tracks/`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.tracks.length > 0) {
-                        audioPlayer.src = data.tracks[0].file;
-                        audioPlayer.play();
-                    }
-                });
-        }
+    let stations = [{% for station in stations %}"{{ station.name|slugify }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
+    let currentIndex = 0;
+
+    function playStation(stationName) {
+        currentStation = stationName;
+        fetch(`/media/tracks/${stationName}/`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.tracks.length > 0) {
+                    audioPlayer.src = data.tracks[0].file;
+                    audioPlayer.play();
+                }
+            });
     }
-    function pause() {
-        audioPlayer.pause();
+
+    function prevStation() {
+        currentIndex = (currentIndex - 1 + stations.length) % stations.length;
+        currentStation = stations[currentIndex];
+        playStation(currentStation);
     }
-    function resume() {
-        audioPlayer.play();
+
+    function nextStation() {
+        currentIndex = (currentIndex + 1) % stations.length;
+        currentStation = stations[currentIndex];
+        playStation(currentStation);
     }
 </script>

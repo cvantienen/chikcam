@@ -2,17 +2,22 @@
 import os
 from django.core.management.base import BaseCommand
 from chikcam.music_player.models import Station, Track
-import random
 
 
 class Command(BaseCommand):
     help = 'Populate the database with predefined stations and tracks'
 
     def handle(self, *args, **kwargs):
+        # Delete existing stations and tracks
+        Track.objects.all().delete()
+        Station.objects.all().delete()
+
         stations = [
-            {'name': 'Rock Station', 'description': 'The best rock music'},
-            {'name': 'Jazz Station', 'description': 'Smooth jazz tunes'},
-            {'name': 'Pop Station', 'description': 'Top pop hits'},
+            {'name': 'Rooster Rock Radio', 'description': 'Rocking the coop with classic and indie rock hits'},
+            {'name': 'Eggstraordinary Beats', 'description': 'Cracking open the freshest beats from around the world'},
+            {'name': 'The Coop Hits', 'description': 'Chart-topping favorites clucked out loud from our nest to yours'},
+            {'name': 'Hen House Harmony', 'description': 'Where every song pecks at your emotions'},
+            {'name': 'Cluckin Country', 'description': 'Your home for down-home tunes and feathered fun'},
         ]
 
         for station_data in stations:
@@ -24,31 +29,16 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.SUCCESS(f'Successfully created station: {station.name}'))
 
                 # Add tracks to the station
-                music_dir = os.path.join('media', 'tracks', station.name.lower().replace(' ', '_'), 'music')
-                voice_dir = os.path.join('media', 'tracks', station.name.lower().replace(' ', '_'), 'voice')
-
-                if os.path.exists(music_dir) and os.path.exists(voice_dir):
-                    music_files = os.listdir(music_dir)
-                    voice_files = os.listdir(voice_dir)
-                    combined_files = list(zip(music_files, voice_files))
-                    random.shuffle(combined_files)
-
-                    for music_file, voice_file in combined_files:
-                        music_path = os.path.join(music_dir, music_file)
-                        voice_path = os.path.join(voice_dir, voice_file)
-
+                station_dir = os.path.join('media', 'tracks', station.name.lower().replace(' ', '_'))
+                if os.path.exists(station_dir):
+                    audio_files = sorted(os.listdir(station_dir))
+                    for audio_file in audio_files:
+                        audio_path = os.path.join(station_dir, audio_file)
                         Track.objects.create(
                             station=station,
-                            title=os.path.splitext(music_file)[0],
-                            file=music_path
+                            title=os.path.splitext(audio_file)[0],
+                            file=audio_path
                         )
-                        self.stdout.write(self.style.SUCCESS(f'Added music track: {music_file} to station: {station.name}'))
-
-                        Track.objects.create(
-                            station=station,
-                            title=os.path.splitext(voice_file)[0],
-                            file=voice_path
-                        )
-                        self.stdout.write(self.style.SUCCESS(f'Added voice track: {voice_file} to station: {station.name}'))
+                        self.stdout.write(self.style.SUCCESS(f'Added track: {audio_file} to station: {station.name}'))
                 else:
-                    self.stdout.write(self.style.WARNING(f'Track directories do not exist: {music_dir} or {voice_dir}'))
+                    self.stdout.write(self.style.WARNING(f'Track directory does not exist: {station_dir}'))
