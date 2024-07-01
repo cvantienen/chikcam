@@ -17,3 +17,6 @@ django-redis==5.4.0  # https://github.com/jazzband/django-redis
 
 # Stripe
 stripe==9.9.0 # https://docs.stripe.com/
+
+# Mutagen for handling audio file metadata
+mutagen==1.47.0 # https://mutagen.readthedocs.io/en/latest/index.html

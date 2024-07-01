@@ -6,7 +6,6 @@ from django.urls import include
 from django.urls import path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
-from django.conf import settings
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
@@ -25,7 +24,6 @@ urlpatterns = [
     # Media files
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]
-
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit
@@ -48,6 +46,8 @@ if settings.DEBUG:
         ),
         path("500/", default_views.server_error),
     ]
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
     if "debug_toolbar" in settings.INSTALLED_APPS:
         import debug_toolbar
 

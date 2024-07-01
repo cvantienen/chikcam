@@ -143,7 +143,7 @@
 }
 
 .card .card-block {
-    padding: 25px;
+    padding: 10px;
     height: 9rem;
 }
 
@@ -200,3 +200,41 @@
   background: linear-gradient(0deg, rgb(142, 143, 139) 0%, rgb(96, 95, 95) 33%, rgba(75, 75, 75, 0.92) 33%);
   border-color: #badce3;
 }
+.music-player-card {
+    background: #1e1e1e;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: auto;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+.cover-art-container {
+    position: relative;
+    text-align: center;
+}
+
+.cover-art {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+

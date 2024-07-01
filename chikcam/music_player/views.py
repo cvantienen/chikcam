@@ -1,15 +1,28 @@
-from django.shortcuts import render
 from django.http import JsonResponse
-from .models import Station
+from django.shortcuts import render
+from .models import Station, Track
 
 
 def music_player(request):
     stations = Station.objects.all()
-    return render(request, 'music_player/player.html', {'stations': stations})
+    print(f'Music PLayer Html Request:{stations}')
+    return render(request, 'music_player/music_player.html', {'stations': stations})
 
 
-def station_tracks(request, station_id):
-    station = Station.objects.get(id=station_id)
-    tracks = station.tracks.all()
-    track_list = [{'title': track.title, 'file': track.file.url} for track in tracks]
-    return JsonResponse({'tracks': track_list})
+def stations_api(request):
+    stations = Station.objects.all()
+    data = []
+    print(f'Music PLayer API Request:{stations}')
+    for station in stations:
+        tracks = [{
+            'title': track.title,
+            'artist': track.artist,
+            'file_url': track.file.url,
+            'cover_art_url': track.cover_art.url if track.cover_art else '',
+        } for track in station.track_set.all()]
+        data.append({
+            'id': station.id,
+            'name': station.name,
+            'tracks': tracks,
+        })
+    return JsonResponse(data, safe=False)
