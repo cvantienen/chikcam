@@ -2,17 +2,17 @@
 <div id="music-player" class="music-player-card">
     <div class="cover-art-container">
         <img id="cover-art" src="#" alt="Cover Art" class="cover-art">
-        <div class="controls">
-            <button id="switch-station-btn" class="icon-btn">
-                <img src="{% static 'images/icons/chevron-right.svg' %}" alt="Switch Station">
-            </button>
-            <audio id="audio-player" controls>
-                <source id="audio-source" src="#" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
     </div>
     <h5 class="pink-gradient text-center mb-1">Chikcam Radio</h5>
+    <div class="controls">
+      <button id="switch-station-btn" class="icon-btn">
+          <img src="{% static 'images/icons/chevron-right.svg' %}" alt="Switch Station">
+      </button>
+      <audio id="audio-player" controls>
+          <source id="audio-source" src="#" type="audio/mpeg">
+          Your browser does not support the audio element.
+      </audio>
+    </div>
     <div id="track-info" class="track-info">
         <h5 id="station-name" class="station-name">Station Name</h5>
         <h4 id="track-title" class="track-title">Track Title</h4>
@@ -38,8 +38,8 @@
       function loadStation(stationIndex) {
           const station = stations[stationIndex];
           stationName.textContent = station.name;
-          const track = station.tracks[currentTrackIndex];
-          playTrack(track);
+          currentTrackIndex = 0;  // Reset track index when loading a new station
+          playTrack(station.tracks[currentTrackIndex]);
       }
 
       // Function to play a specific track
@@ -55,8 +55,14 @@
       // Event listener for switching stations
       switchStationBtn.addEventListener('click', function() {
           currentStationIndex = (currentStationIndex + 1) % stations.length;
-          currentTrackIndex = 0;  // Reset track index when switching stations
           loadStation(currentStationIndex);
+      });
+
+      // Event listener for when the current track ends
+      audioPlayer.addEventListener('ended', function() {
+          const station = stations[currentStationIndex];
+          currentTrackIndex = (currentTrackIndex + 1) % station.tracks.length;
+          playTrack(station.tracks[currentTrackIndex]);
       });
 
       // Fetch stations data from Django backend

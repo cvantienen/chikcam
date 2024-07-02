@@ -16,9 +16,9 @@ class Command(BaseCommand):
         Station.objects.all().delete()
 
         stations = [
+            {'name': 'The Coop Hits', 'description': 'Chart-topping favorites clucked out loud from our nest to yours'},
             {'name': 'Rooster Rock Radio', 'description': 'Rocking the coop with classic and indie rock hits'},
             {'name': 'Eggstraordinary Beats', 'description': 'Cracking open the freshest beats from around the world'},
-            {'name': 'The Coop Hits', 'description': 'Chart-topping favorites clucked out loud from our nest to yours'},
             {'name': 'Hen House Harmony', 'description': 'Where every song pecks at your emotions'},
             {'name': 'Cluckin Country', 'description': 'Your home for down-home tunes and feathered fun'},
         ]

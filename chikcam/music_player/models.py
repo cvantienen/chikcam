@@ -33,3 +33,12 @@ class Track(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class VoiceRecord(models.Model):
+    title = models.CharField(max_length=255)
+    file = models.FileField(upload_to='voice_recordings/')
+    stations = models.ManyToManyField('Station', related_name='voice_recordings')
+
+    def __str__(self):
+        return self.title

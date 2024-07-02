@@ -221,16 +221,6 @@
     border-radius: 10px;
 }
 
-.controls {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
 .icon-btn {
     background: none;
     border: none;
