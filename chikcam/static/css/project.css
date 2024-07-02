@@ -142,11 +142,6 @@
     transition: all 0.3s ease-in-out;
 }
 
-.card .card-block {
-    padding: 10px;
-    height: 9rem;
-}
-
 .order-card i {
     font-size: 26px;
 }
@@ -201,9 +196,7 @@
   border-color: #badce3;
 }
 .music-player-card {
-    background: #1e1e1e;
     border-radius: 15px;
-    padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     margin: auto;
@@ -218,7 +211,9 @@
 
 .cover-art {
     width: 100%;
+    height: auto; /* Maintain aspect ratio */
     border-radius: 10px;
+    max-width: 100%; /* Ensure it doesn't exceed the container's width */
 }
 
 .icon-btn {

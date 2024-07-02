@@ -4,67 +4,73 @@
 <div id="messages"></div>
 <div class="container">
   <div class="row">
-    <div class="col-12 col-lg-8 align-items-center justify-content-center">
-      <span class="yellow-gradient display-5">chik</span><span class="pink-gradient display-3">cam </span>
-      <p class="text-muted mt-2 lead"> Real Hot Chicks</p>
-    </div>
-    <div class="col-lg-6 align-content-center justify-content-center mx-1" id="fizzle_title_1">
-      {% include 'music_player/music_player.html' %}
+    <div class="col-6 col-lg-8">
+      <span class="text-muted mt-2 lead"> Real Hot Chicks</span>
     </div>
   </div>
+</div>
+<div class="container">
   <div class="row">
-    <div class="col-lg-6 align-content-center justify-content-center">
-      {% include 'content/cards.html' %}
+    <div class="col-lg-6 align-content-center justify-content-center" id="fizzle_title_1">
+      {% include 'music_player/music_player.html' %}
     </div>
-    <div class="col-lg-5 align-content-center justify-content-center">
-      <div class="rounded-2 mt-1 mx-3">
-        <h5 class="fw-semibold text-center m-1 text-light">Play with the chicks!
-        </h5>
-      </div>
-      <hr>
-      <div class="card rounded-3 bg-animate-dark mt-2">
-        <div class="card-body">
-          <div class="row text-center">
-            <div class="col-6">
-              <form action="{% url 'esp32:increment_action' 'feed_snack' %}" method="post">
-                {% csrf_token %}
-                <button onclick="event.preventDefault(); activateButton('feed_snack');" type="submit" class="btn btn-secondary bg-transparent w-100 justify-content-center">
-                  <img src="{% static 'images/icons/pizza-slice-2.svg' %}" class="icon-btn" alt="Food">
-                  <span class="lead text-secondary">Feed Snack</span>
-                </button>
-              </form>
-            </div>
-            <div class="col-6">
-              <form action="{% url 'esp32:increment_action' 'flashlight' %}" method="post">
-                {% csrf_token %}
-                <button onclick="event.preventDefault(); activateButton('flashlight');" type="submit" class="btn btn-primary bg-transparent w-100 justify-content-center">
-                  <img src="{% static 'images/icons/gas-pump.svg' %}" class="icon-btn" alt="Pump">
-                  <span class="text-primary">Pump Gatorade</span>
-                </button>
-              </form>
-            </div>
-            <div class="col-6 mt-2">
-              <form action="{% url 'esp32:increment_action' 'text_to_talk' %}" method="post">
-                {% csrf_token %}
-                <button onclick="event.preventDefault(); activateButton('text_to_talk');" type="submit" class="btn btn-info bg-transparent w-100 justify-content-center">
-                  <img src="{% static 'images/icons/msg-bubble-user.svg' %}" class="icon-btn" alt="Text to Talk Message">
-                  <span class="leader text-info">Send Message</span>
-                </button>
-              </form>
-            </div>
-            <div class="col-6 mt-2">
-              <form action="{% url 'esp32:increment_action' 'take_pic' %}" method="post">
-                {% csrf_token %}
-                <button onclick="event.preventDefault(); activateButton('take_pic');" type="submit" class="btn btn-success bg-transparent w-100 justify-content-center">
-                  <img src="{% static 'images/icons/camera-2.svg' %}" class="icon-btn" alt="Text to Talk Message">
-                  <span class="leader text-success">Snap a Picture</span>
-                </button>
-              </form>
+    <div class="col-lg-6 align-content-center justify-content-center">
+      <div class="row">
+        <div class="col-lg-12">
+          {% include 'content/cards.html' %}
+        </div>
+        <div class="col-lg-12">
+          <div class="rounded-2 m-2">
+            <h4 class="fw-semibold text-center m-1 text-light">Play with the chicks!</h4>
+          </div>
+          <hr>
+          <div class="card rounded-3 mt-2 bg-transparent">
+            <div class="card-body">
+              <div class="row text-center">
+                <div class="col-6">
+                  <form action="{% url 'esp32:increment_action' 'feed_snack' %}" method="post">
+                    {% csrf_token %}
+                    <button onclick="event.preventDefault(); activateButton('feed_snack');" type="submit" class="btn btn-outline-secondary lead fw-semibold my-1 w-100 justify-content-center">
+                      <img src="{% static 'images/icons/pizza-slice-2.svg' %}" class="icon-btn" alt="Food">
+                      <span class="lead text-secondary">Feed Snack</span>
+                    </button>
+                  </form>
+                </div>
+                <div class="col-6">
+                  <form action="{% url 'esp32:increment_action' 'flashlight' %}" method="post">
+                    {% csrf_token %}
+                    <button onclick="event.preventDefault(); activateButton('flashlight');" type="submit" class="btn btn-outline-primary lead fw-semibold my-1 w-100 justify-content-center">
+                      <img src="{% static 'images/icons/gas-pump.svg' %}" class="icon-btn" alt="Pump">
+                      <span class="text-primary">Pump Gatorade</span>
+                    </button>
+                  </form>
+                </div>
+                <div class="col-6 mt-2">
+                  <form action="{% url 'esp32:increment_action' 'text_to_talk' %}" method="post">
+                    {% csrf_token %}
+                    <button onclick="event.preventDefault(); activateButton('text_to_talk');" type="submit" class="btn btn-outline-info lead fw-semibold my-1 w-100 justify-content-center">
+                      <img src="{% static 'images/icons/msg-bubble-user.svg' %}" class="icon-btn" alt="Text to Talk Message">
+                      <span class="leader text-info">Send Message</span>
+                    </button>
+                  </form>
+                </div>
+                <div class="col-6 mt-2">
+                  <form action="{% url 'esp32:increment_action' 'take_pic' %}" method="post">
+                    {% csrf_token %}
+                    <button onclick="event.preventDefault(); activateButton('take_pic');" type="submit" class="btn btn-outline-success lead fw-semibold my-1 w-100 justify-content-center">
+                      <img src="{% static 'images/icons/camera-2.svg' %}" class="icon-btn" alt="Text to Talk Message">
+                      <span class="leader text-success">Snap a Picture</span>
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="row">
     <div class="col-lg-12">
       <div id="twitch-embed"></div>
     </div>
