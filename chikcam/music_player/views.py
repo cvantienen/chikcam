@@ -17,12 +17,14 @@ def stations_api(request):
         tracks = [{
             'title': track.title,
             'artist': track.artist,
-            'file_url': track.file.url,
-            'cover_art_url': track.cover_art.url if track.cover_art else '',
+            'file_url': request.build_absolute_uri(track.file.url),
+            'cover_art_url': request.build_absolute_uri(track.cover_art.url) if track.cover_art else '',
+            'album': track.album,  # Ensure 'album' is included if it's part of the Track model
         } for track in station.track_set.all()]
         data.append({
             'id': station.id,
             'name': station.name,
             'tracks': tracks,
         })
+        print(data)
     return JsonResponse(data, safe=False)

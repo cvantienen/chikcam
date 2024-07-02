@@ -222,4 +222,7 @@
     cursor: pointer;
 }
 
-
+.btn-hover:hover {
+  color: #fff;
+  border: 1px solid #fff;
+}

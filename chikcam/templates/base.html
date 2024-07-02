@@ -40,19 +40,18 @@
           crossorigin="anonymous"
           referrerpolicy="no-referrer"></script>
   <!-- Your stuff: Third-party javascript libraries go here -->
-    
+  <!--- Ajax-->    
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!--- Stripe -->
   <script async src="https://js.stripe.com/v3/buy-button.js"></script>
   <script src="https://js.stripe.com/v3/"></script>  
-  
+  <!--- Amplitude JS -->
+  <script src="https://cdn.jsdelivr.net/npm/amplitudejs@5.3.2/dist/amplitude.min.js"></script> 
   <!-- place project specific Javascript in this file -->
   <script defer src="{% static 'js/anime.js' %}"></script>
   <script defer src="{% static 'js/notification.js' %}"></script>
   <script defer src="{% static 'js/project.js' %}"></script>
-  <script defer src="{% static 'js/music_player.js' %}"></script>
   <!-- Include the JavaScript file -->
-    <!-- Other head elements -->
-    
 {% endblock javascript %}
 </head>
 <body class="{% block bodyclass %} main-bg-dark text-light {% endblock bodyclass %}" id="page-top">
