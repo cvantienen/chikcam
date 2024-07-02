@@ -326,7 +326,6 @@ tags
 dump.rdb
 
 ### Project template
-chikcam/media/
 
 .pytest_cache/
 .env
