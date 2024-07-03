@@ -1,51 +1,74 @@
 {% load static %}
-<div class="container">
+<div class="container h-100">
+  <div class="d-flex flex-row justify-content-center mt-0">
+  <span class="pink-gradient text-center justify-content-center">Chikcam Radio: </span>
+    <span id="station-name" class="mx-2 yellow-gradient">Station Name</span>
+  </div>
   <div class="row justify-content-center">
-    <h5 class="pink-gradient text-center mb-1">Chikcam Radio</h5>
-    <div class="col-lg-6">
+    <div class="col-lg-8">
       <div id="music-player" class="music-player-card">
         <div class="cover-art-container">
           <img id="cover-art" src="#" alt="Cover Art" class="cover-art img-fluid">
         </div>
       </div>
     </div>
-    <div class="col-lg-6">
-      <div id="track-info" class="track-info text-center mt-3">
-        <div class="info-item mb-2">
-          <h6 class="text-muted mb-1">Current Station</h6>
-          <p id="station-name" class="fw-bold text-uppercase mb-0">Station Name</p>
+    <div class="col-lg-4 col-md-6 col-sm-12 align-content-center">
+      <div id="track-info" class="track-info text-center align-content-center justify-content-center">
+        <div class="info-item">
+          <p class="mb-0 pink-gradient">Song</p>
+          <h6 id="track-title" class="mb-0 yellow-gradient">Track Title</h6>
         </div>
-        <div class="info-item mb-2">
-          <h6 class="text-muted mb-1">Song</h6>
-          <p id="track-title" class="fw-bold text-uppercase mb-0">Track Title</p>
+        <div class="info-item">
+          <p class="mb-0 pink-gradient">Artist</p>
+          <h6 id="track-artist" class="mb-0 yellow-gradient">Artist</h6>
         </div>
-        <div class="info-item mb-2">
-          <h6 class="text-muted mb-1">Artist</h6>
-          <p id="track-artist" class="fw-bold text-uppercase mb-0">Artist</p>
-        </div>
-        <div class="info-item mb-2">
-          <h6 class="text-muted mb-1">Album</h6>
-          <p id="track-album" class="fw-bold text-uppercase mb-0">Album Name</p>
+        <div class="info-item">
+          <p class="mb-0 pink-gradient">Album</p>
+          <h6 id="track-album" class="mb-0 yellow-gradient">Album Name</h6>
         </div>
       </div>
-      <div class="controls">
-        <audio id="audio-player">
-          <source id="audio-source" src="#" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-        <div class="custom-controls">
-          <button id="play-btn" class="btn btn-primary btn-sm my-1">Play</button>
-          <button id="pause-btn" class="btn btn-primary btn-sm my-1">Pause</button>
-          <input type="range" id="progress-bar" value="0" max="100">
-          <input type="range" id="volume-control" value="100" max="100">
+      <div class="d-flex justify-content-center my-3">
+        <div class="d-flex flex-column align-items-center w-100">
+          <div class="d-flex flex-row justify-content-center mb-1">
+            <span class="lead" id="current-time">0:00</span>
+            <span class="lead" id="separator">/</span>
+            <span class="lead" id="total-time">0:00</span>
+          </div>
+          <div id="progress-bar" class="progress w-100">
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+          </div>
         </div>
-        <button id="switch-station-btn" class="btn btn-primary btn-sm my-1">
-            Next Station
-            <img src="{% static 'images/icons/chevron-right.svg' %}" alt="Switch Station" class="me-1">
-        </button>
+      </div>      
+      <div class="d-flex justify-content-center my-1">
+        <div class="controls d-flex flex-row align-items-center w-100">
+          <audio id="audio-player">
+            <source id="audio-source" src="#" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="custom-controls d-flex align-items-center justify-content-center flex-grow-1">
+            <div class="btn-group btn-group-sm">
+              <button id="prev-station-btn" class="btn btn-outline-dark btn-sm my-1 d-flex align-items-center d-flex flex-column">
+                <img src="{% static 'images/icons/left-arrow.svg' %}" alt="Switch Station" class="icon-size">
+                <span class="pink-gradient">Last</span>
+              </button>
+              <button id="play-btn" class="btn btn-outline-dark btn-sm my-1 d-flex align-items-center d-flex flex-column">
+                <img src="{% static 'images/icons/button-power.svg' %}" alt="Play" class="icon-size">
+                <span class="pink-gradient">Power</span>
+              </button>
+              <button id="next-station-btn" class="btn btn-outline-dark btn-sm my-1 d-flex align-items-center d-flex flex-column">
+                <img src="{% static 'images/icons/right-arrow.svg' %}" alt="Switch Station" class="icon-size">
+                <span class="pink-gradient">Next</span>
+              </button>
+            </div>  
+          </div>  
+        </div>
       </div>
+    </div> 
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
     </div>
-  </div>  
+  </div>
 </div>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -54,51 +77,73 @@
   const stationName = document.getElementById('station-name');
   const trackTitle = document.getElementById('track-title');
   const trackArtist = document.getElementById('track-artist');
-  const trackAlbum = document.getElementById('track-album');  // Add this line
+  const trackAlbum = document.getElementById('track-album');
   const coverArt = document.getElementById('cover-art');
-  const switchStationBtn = document.getElementById('switch-station-btn');
+  const nextStationBtn = document.getElementById('next-station-btn');
+  const prevStationBtn = document.getElementById('prev-station-btn');
+  const progressBar = document.getElementById('progress-bar');
+  const currentTimeDisplay = document.getElementById('current-time');
+  const totalTimeDisplay = document.getElementById('total-time');
 
   let currentStationIndex = 0;
   let currentTrackIndex = 0;
-  let stations = [];  // Array to store station data fetched from Django
+  let stations = [];
 
-  // Function to load current station and play the first track
   function loadStation(stationIndex) {
       const station = stations[stationIndex];
       stationName.textContent = station.name;
-      currentTrackIndex = 0;  // Reset track index when loading a new station
+      currentTrackIndex = 0;
       playTrack(station.tracks[currentTrackIndex]);
   }
 
-  // Function to play a specific track
   function playTrack(track) {
-      audioSource.src = track.file_url;  // Assuming 'file_url' is the URL to your audio file
+      audioSource.src = track.file_url;
       audioPlayer.load();
       audioPlayer.play();
       trackTitle.textContent = track.title;
       trackArtist.textContent = track.artist;
-      coverArt.src = track.cover_art_url;  // Assuming 'cover_art_url' is the URL to your cover art image
+      trackAlbum.textContent = track.album;
+      coverArt.src = track.cover_art_url;
   }
 
-  // Event listener for switching stations
-  switchStationBtn.addEventListener('click', function() {
+  nextStationBtn.addEventListener('click', function() {
       currentStationIndex = (currentStationIndex + 1) % stations.length;
       loadStation(currentStationIndex);
   });
 
-  // Event listener for when the current track ends
+  prevStationBtn.addEventListener('click', function() {
+      currentStationIndex = (currentStationIndex - 1) % stations.length;
+      loadStation(currentStationIndex);
+  });
+  
   audioPlayer.addEventListener('ended', function() {
       const station = stations[currentStationIndex];
       currentTrackIndex = (currentTrackIndex + 1) % station.tracks.length;
       playTrack(station.tracks[currentTrackIndex]);
   });
 
-  // Fetch stations data from Django backend
+  audioPlayer.addEventListener('timeupdate', function() {
+      const currentTime = audioPlayer.currentTime;
+      const duration = audioPlayer.duration;
+      if (!isNaN(duration)) {
+          const progressPercent = (currentTime / duration) * 100;
+          progressBar.querySelector('.progress-bar').style.width = `${progressPercent}%`;
+          currentTimeDisplay.textContent = formatTime(currentTime);
+          totalTimeDisplay.textContent = formatTime(duration);
+      }
+  });
+
+  function formatTime(seconds) {
+      const minutes = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+  }
+
   fetch('/music_player/api/stations/')
       .then(response => response.json())
       .then(data => {
           stations = data;
-          loadStation(currentStationIndex);  // Load initial station
+          loadStation(currentStationIndex);
       })
       .catch(error => console.error('Error fetching stations:', error));
 });

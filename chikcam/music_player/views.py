@@ -26,5 +26,4 @@ def stations_api(request):
             'name': station.name,
             'tracks': tracks,
         })
-        print(data)
     return JsonResponse(data, safe=False)
